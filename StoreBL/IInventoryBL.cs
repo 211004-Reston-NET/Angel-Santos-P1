@@ -4,7 +4,7 @@ namespace StoreBL
 {
     public interface IInventoryBL
     {
-        LineItem GetItemById(int p_id);
-        LineItem ReplenishLineById(LineItem p_lin, int p_howMuchAdded);
+        Inventory GetItemById(int p_id);
+        //Inventory ReplenishLineById(Inventory p_inv, int p_howMuchAdded);
     }
 }

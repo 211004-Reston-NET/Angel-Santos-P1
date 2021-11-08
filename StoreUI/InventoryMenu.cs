@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections.Generic;
 using StoreBL;
 using StoreModels;
@@ -47,7 +47,7 @@ namespace StoreUI
                     try
                     {
                         int linId = Int32.Parse(Console.ReadLine());
-                        LineItem linFound = _invBL.GetItemById(linId);
+                        Inventory linFound = _invBL.GetItemById(linId);
 
                         Console.WriteLine("Input how much you want to add to inventory.");
                         int addedInventory = Int32.Parse(Console.ReadLine());
@@ -74,3 +74,4 @@ namespace StoreUI
 }
 
    
+*/

@@ -61,10 +61,11 @@ namespace StoreBL
             }
         
         
-        public List<LineItem> GetAllLineItemInventory(Product p_prod)
+        /*public List<Inventory> GetAllLineItemInventory(Product p_prod)
         {
               return _repo.GetAllLineItemInventory(p_prod);
         }
+        */
         public List<StoreFront> GetAllStore()
         {
            
@@ -116,10 +117,7 @@ namespace StoreBL
             return listOfProduct.Where(prod => prod.ItemName.ToLower().Contains(p_name.ToLower())).ToList();
         }
 
-        List<LineItem> IStoreBL.GetAllLineItemInventory()
-        {
-            throw new NotImplementedException();
-        }
+        
 
 
         /*      

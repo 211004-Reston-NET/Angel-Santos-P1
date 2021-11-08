@@ -11,16 +11,16 @@ namespace StoreBL
             _repo = p_repo;
         }
     
-        public LineItem GetItemById(int p_id)
+        public Inventory GetItemById(int p_id)
         {
            return _repo.GetItemById(p_id);
         }
-        public LineItem ReplenishLineById(LineItem p_lin, int p_howMuchAdded)
+        /*public Inventory ReplenishLineById(Inventory p_inv, int p_howMuchAdded)
         {
-            p_lin.Inventory += p_howMuchAdded;
+            p_inv.Quantity += p_howMuchAdded;
 
-            return _repo.ReplenishLine(p_lin);
+            return _repo.ReplenishInv(p_inv);
         }
-       
+       */
     }
 }

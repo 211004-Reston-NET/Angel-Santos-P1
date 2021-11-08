@@ -36,29 +36,31 @@ namespace StoreDL
 
         
 
-        public LineItem ReplenishLine(LineItem p_lin)
+       /* public Inventory ReplenishInv(Inventory p_inv)
         {
-            _context.LineItems.Update(p_lin);
+            _context.Inventories.Update(p_inv);
 
             _context.SaveChanges();
             
-            return p_lin;
+            return p_inv;
         }
+        */
  
-        public LineItem GetItemById(int p_id)
+        public Inventory GetItemById(int p_id)
         {
-            return _context.LineItems
+            return _context.Inventories
             .AsNoTracking() //Stop tracking entity once found
-            .FirstOrDefault(lin => lin.OrderId == p_id);
+            .FirstOrDefault(inv => inv.InvId == p_id);
             
         }
        
 
 
-        public List<LineItem> GetAllLineItemInventory(Product p_prod)
+       /* public List<Inventory> GetAllLineItemInventory(Product p_prod)
         {
             return _context.LineItems.ToList(); //Convert it into List
         }
+        */
 
 
 

@@ -24,54 +24,92 @@ namespace StoreDL.Migrations
                     b.Property<int>("CustomerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("customer_id")
+                        .HasColumnName("Customer_Id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("email");
+                        .HasColumnName("Email");
 
                     b.Property<string>("FirstName")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("first_name");
+                        .HasColumnName("First_Name");
 
                     b.Property<string>("LastName")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("last_name");
+                        .HasColumnName("Last_Name");
+
+                    b.Property<int>("Phone")
+                        .HasColumnType("int")
+                        .HasColumnName("Phone");
 
                     b.Property<string>("StreetAddress")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("street_address");
+                        .HasColumnName("Street_Address");
 
                     b.HasKey("CustomerId");
 
                     b.ToTable("Customer");
                 });
 
-            modelBuilder.Entity("StoreModels.LineItem", b =>
+            modelBuilder.Entity("StoreModels.Inventory", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("InvId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("order_id")
+                        .HasColumnName("Inv_Id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Inventory")
+                    b.Property<int>("ProdId")
                         .HasColumnType("int")
-                        .HasColumnName("inventory");
+                        .HasColumnName("Prod_Id");
 
-                    b.HasKey("OrderId")
-                        .HasName("PK__LineItem__4659622933ED3862");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int")
+                        .HasColumnName("Quantity");
 
-                    b.ToTable("LineItem");
+                    b.Property<int>("StoreId")
+                        .HasColumnType("int")
+                        .HasColumnName("Store_Id");
+
+                    b.HasKey("InvId")
+                        .HasName("PK__InvId__A2F2A30CAD3172F2");
+
+                    b.ToTable("Inventory");
+                });
+
+            modelBuilder.Entity("StoreModels.LineItem", b =>
+                {
+                    b.Property<int>("LineId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Line_Id")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int")
+                        .HasColumnName("Order_Id");
+
+                    b.Property<int>("ProdId")
+                        .HasColumnType("int")
+                        .HasColumnName("Prod_Id");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int")
+                        .HasColumnName("Quantity");
+
+                    b.HasKey("LineId")
+                        .HasName("PK__LineId__A2F2A30CAD3172F2");
+
+                    b.ToTable("Line_Item");
                 });
 
             modelBuilder.Entity("StoreModels.Product", b =>
@@ -79,36 +117,33 @@ namespace StoreDL.Migrations
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("product_id")
+                        .HasColumnName("Product_Id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Category")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("category");
+                        .HasColumnName("Category");
 
                     b.Property<string>("Description")
                         .HasMaxLength(255)
                         .IsUnicode(false)
                         .HasColumnType("varchar(255)")
-                        .HasColumnName("description");
+                        .HasColumnName("Description");
 
                     b.Property<string>("ItemName")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("item_name");
+                        .HasColumnName("Item_Name");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,0)")
-                        .HasColumnName("price");
+                        .HasColumnName("Price");
 
-                    b.Property<int>("StoreLocation")
-                        .HasColumnType("int")
-                        .HasColumnName("store_location");
-
-                    b.HasKey("ProductId");
+                    b.HasKey("ProductId")
+                        .HasName("PK__ProductId__A2F2A30CAD3172F2");
 
                     b.ToTable("Product");
                 });
@@ -118,29 +153,23 @@ namespace StoreDL.Migrations
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("order_id")
+                        .HasColumnName("Order_Id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int")
-                        .HasColumnName("customer_id");
+                        .HasColumnName("Customer_Id");
 
-                    b.Property<string>("ItemName")
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
-                        .HasColumnName("item_name");
-
-                    b.Property<int>("LocationId")
+                    b.Property<int>("StoreId")
                         .HasColumnType("int")
-                        .HasColumnName("location_id");
+                        .HasColumnName("Store_Id");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,0)")
-                        .HasColumnName("total_price");
+                        .HasColumnName("Total_Price");
 
                     b.HasKey("OrderId")
-                        .HasName("PK__Purchase__46596229711E6780");
+                        .HasName("PK__OrderId__A2F2A30CAD3172F2");
 
                     b.ToTable("Purchase_Order");
                 });
@@ -150,32 +179,32 @@ namespace StoreDL.Migrations
                     b.Property<int>("StoreId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("store_id")
+                        .HasColumnName("Store_Id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(255)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("Address");
 
                     b.Property<string>("City")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("city");
+                        .HasColumnName("City");
 
                     b.Property<string>("State")
                         .HasMaxLength(2)
                         .IsUnicode(false)
                         .HasColumnType("varchar(2)")
-                        .HasColumnName("state");
+                        .HasColumnName("State");
 
                     b.Property<string>("StoreName")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("store_name");
-
-                    b.Property<string>("StreetAddress")
-                        .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("street_address");
+                        .HasColumnName("Store_Name");
 
                     b.HasKey("StoreId")
                         .HasName("PK__StoreFro__A2F2A30CAD3172F2");
