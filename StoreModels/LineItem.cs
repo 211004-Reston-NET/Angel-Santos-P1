@@ -8,11 +8,7 @@ namespace StoreModels
         public int Quantity    { get; set; }
     
         
-        /*public override string ToString()
-        {
-            return $"OrderId: {LineId}\nInventory:{Inventory}";
-        } 
-        */   
+       
     }    
 }
 

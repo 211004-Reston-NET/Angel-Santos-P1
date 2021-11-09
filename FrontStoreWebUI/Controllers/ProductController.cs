@@ -1,43 +1,41 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FrontStoreWebUI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StoreBL;
-using FrontStoreWebUI.Models;
 using System.Linq;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace FrontStoreWebUI.Controllers
 {
-    public class StoreFrontController : Controller
+    public class ProductController : Controller
     {
         //Field gets data from Business Layer
         private IStoreBL _storeBL;
-        public StoreFrontController(IStoreBL p_storeBL){
+        public ProductController(IStoreBL p_storeBL){
             _storeBL = p_storeBL;
         }
-        
-        // GET: StoreFrontController
-        public ActionResult Index(){
-            return View(_storeBL.GetAllStore()
-                .Select(store => new StoreVM(store))
+
+        // GET: ProductController
+        public ActionResult Index()
+        {
+            return View(_storeBL.GetAllProducts()
+                .Select(prod => new ProductVM(prod))
                 .ToList()
-            );
+                );
         }
 
-        // GET: StoreFrontController/Details/5
+        // GET: ProductController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: StoreFrontController/Create
+        // GET: ProductController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: StoreFrontController/Create
+        // POST: ProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -52,13 +50,13 @@ namespace FrontStoreWebUI.Controllers
             }
         }
 
-        // GET: StoreFrontController/Edit/5
+        // GET: ProductController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: StoreFrontController/Edit/5
+        // POST: ProductController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -73,13 +71,13 @@ namespace FrontStoreWebUI.Controllers
             }
         }
 
-        // GET: StoreFrontController/Delete/5
+        // GET: ProductController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: StoreFrontController/Delete/5
+        // POST: ProductController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

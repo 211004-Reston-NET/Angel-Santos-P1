@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreDL", "StoreDL\StoreDL.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelTest", "ModelTest\ModelTest.csproj", "{2B2C88DC-405B-4F0B-B8A1-F58BE7CC647F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontStoreWebUI", "FrontStoreWebUI\FrontStoreWebUI.csproj", "{331912AC-EB92-47BC-B916-3C757DCB4A47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontStoreWebUI", "FrontStoreWebUI\FrontStoreWebUI.csproj", "{331912AC-EB92-47BC-B916-3C757DCB4A47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

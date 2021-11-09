@@ -1,8 +1,8 @@
 bin
 obj
 .vscode
-FirstDB.sql
-p0CreateTable
+.SQLDBScript
+.P1Requirements
 appsetting.json
 appsettings.json
 appsettings.Development.json
