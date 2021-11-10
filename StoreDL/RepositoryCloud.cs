@@ -151,7 +151,7 @@ namespace StoreDL
 
         public List<Customer> GetAllCustomer()
         {
-            throw new System.NotImplementedException();
+            return _context.Customers.ToList();
         }
 
         public PurchaseOrder AddPurchase(PurchaseOrder p_purchase)

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FrontStoreWebUI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StoreBL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +11,17 @@ namespace FrontStoreWebUI.Controllers
 {
     public class CustomerController : Controller
     {
+        private ICustomerBL _custBL;
+        public CustomerController(ICustomerBL p_custBL){
+            _custBL = p_custBL;
+        }
         // GET: CustomerController
         public ActionResult Index()
         {
-            return View();
+            return View(_custBL.GetAllCustomers()
+                .Select(cust => new CustomerVM(cust))
+                .ToList()
+                );
         }
 
         // GET: CustomerController/Details/5
