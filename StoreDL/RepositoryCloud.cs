@@ -1,8 +1,11 @@
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using StoreModels;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace StoreDL
 {
@@ -13,6 +16,14 @@ namespace StoreDL
         public RepositoryCloud(DBp0Context p_context)
         {
             _context = p_context;
+        }
+        public Product ItemIdCollection(int p_Id)
+        {
+            var item = _context.Products
+            .Include(a => a.Inventories)
+            .ThenInclude(b => b.LineItems)
+            .Single(i => i.ProductId.Equals(p_Id));
+            return item;
         }
         public Product AddProduct(Product p_product)
         {
@@ -34,6 +45,20 @@ namespace StoreDL
             return p_customer;
         }
 
+        public LineItem AddQuantityById(LineItem p_lin)
+        {
+           
+            //Updates the Entity Review based on the current Id it has
+            //Checks other properties of entity to see if they changed
+            //If they changed it will update it
+            _context.LineItems.Update(p_lin);
+
+            //Save the changes of the review
+            _context.SaveChanges();
+
+            return p_lin;
+        }
+
         
 
        /* public Inventory ReplenishInv(Inventory p_inv)
@@ -45,6 +70,14 @@ namespace StoreDL
             return p_inv;
         }
         */
+
+        public Product GetProductById(int p_id)
+        {
+            return _context.Products
+            .AsNoTracking() //Stop tracking entity once found
+            .FirstOrDefault(prod => prod.ProductId == p_id);
+            
+        }
  
         public Inventory GetItemById(int p_id)
         {

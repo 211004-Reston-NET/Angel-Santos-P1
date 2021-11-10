@@ -9,15 +9,15 @@ namespace FrontStoreWebUI.Controllers
     public class ProductController : Controller
     {
         //Field gets data from Business Layer
-        private IStoreBL _storeBL;
-        public ProductController(IStoreBL p_storeBL){
-            _storeBL = p_storeBL;
+        private IProductBL _prodBL;
+        public ProductController(IProductBL p_prodBL){
+            _prodBL = p_prodBL;
         }
 
         // GET: ProductController
         public ActionResult Index()
         {
-            return View(_storeBL.GetAllProducts()
+            return View(_prodBL.GetAllProducts()
                 .Select(prod => new ProductVM(prod))
                 .ToList()
                 );

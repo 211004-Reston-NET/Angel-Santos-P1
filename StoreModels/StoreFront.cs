@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace StoreModels
@@ -61,6 +62,9 @@ namespace StoreModels
                 _state = value;
             }
         }
+
+        public virtual ICollection<Inventory> StoreInv { get; set; }
+        public virtual ICollection<PurchaseOrder> StoreOrder { get; set; }
 
         public override string ToString()
         {

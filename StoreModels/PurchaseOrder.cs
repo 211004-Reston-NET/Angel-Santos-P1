@@ -16,6 +16,10 @@ namespace StoreModels
         public int StoreId {get; set;}
         public int CustomerId {get; set; }
         public decimal TotalPrice { get; set; }
+
+        public virtual StoreFront StoreOrder {get; set;}
+        public virtual LineItem LineOrder {get; set;}
+        public virtual Customer CustOrder {get; set;}
          
     }
 }
