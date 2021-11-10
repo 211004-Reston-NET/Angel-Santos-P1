@@ -9,6 +9,10 @@ namespace FrontStoreWebUI.Models
 {
     public class ProductVM
     {
+        public ProductVM()
+        {
+
+        }
         public ProductVM(Product p_prod)
         {
             this.ProductId = p_prod.ProductId;

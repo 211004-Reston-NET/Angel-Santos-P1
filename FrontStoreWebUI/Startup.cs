@@ -23,6 +23,11 @@ namespace FrontStoreWebUI
         {
             services.AddDbContext<DBp0Context>(options => options.UseSqlServer(Configuration.GetConnectionString("ReferenceToDB")));
             services.AddScoped<IStoreBL, StoreFrontBL>();
+            services.AddScoped<IProductBL, ProductBL>();
+            services.AddScoped<IInventoryBL, InventoryBL>();
+            services.AddScoped<ILineItemBL, LineItemBL>();
+            services.AddScoped<IOrderBL, OrderBL>();
+            services.AddScoped<ICustomerBL, CustomerBL>();
             services.AddScoped<IRepository, RepositoryCloud>();
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();

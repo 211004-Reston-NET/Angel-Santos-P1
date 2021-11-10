@@ -4,6 +4,10 @@ namespace FrontStoreWebUI.Models
 {
     public class LineItemVM
     {
+        public LineItemVM()
+        {
+
+        }
         public LineItemVM(LineItem p_line)
         {
             this.LineId = p_line.LineId;

@@ -4,6 +4,11 @@ namespace FrontStoreWebUI.Models
 {
     public class PurchaseOrderVM
     {
+        public PurchaseOrderVM()
+        {
+
+        }
+
         public PurchaseOrderVM(PurchaseOrder p_pur)
         {
             this.OrderId = p_pur.OrderId;

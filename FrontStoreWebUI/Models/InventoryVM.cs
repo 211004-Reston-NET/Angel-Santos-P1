@@ -4,6 +4,11 @@ namespace FrontStoreWebUI.Models
 {
     public class InventoryVM
     {
+        public InventoryVM()
+        {
+
+        }
+
         public InventoryVM(Inventory p_inv)
         {
             this.InvId = p_inv.InvId;
