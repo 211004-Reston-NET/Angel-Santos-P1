@@ -20,6 +20,33 @@ namespace StoreBL
             return _repo.AddQuantityById(p_lin);
         }
 
+        //public LineItem Checkout(LineItem p_lin, Inventory p_inv)
+        //{
+            
+        //}
+        //{
+            /*
+
+            var checkout = from quantity in lineitems
+                        join  in Inventory on Inventory.Prod_Id equals LineItems.Prod_Id
+                        select new { quantity = quantity, _context = Inventories};
+
+            foreach (var quantity in checkout)
+            {
+                LineItems.quantity("value")  = Inventory.Inventories.quantity;
+            }
+
+            */
+            /*
+            
+            Update Inventory
+            SET LineItem.Quantity -= Inventory.Quantity
+            FROM Inventory
+            JOIN Line_Item l ON i.Prod_Id=l.Prod_Id;
+
+            */
+        //}
+
         /*public PurchaseOrder AddPurchaseOrder(PurchaseOrder p_purch)
         {
             throw

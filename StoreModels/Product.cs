@@ -14,8 +14,7 @@ namespace StoreModels
         public decimal Price { get;set; } 
         public string Description { get;set; }
         
-        public virtual ICollection<Inventory> Inventories { get; set; }
-        public virtual ICollection<LineItem> LineItems { get; set; }
+        
     }
 }
 

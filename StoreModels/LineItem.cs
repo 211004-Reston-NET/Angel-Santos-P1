@@ -1,17 +1,17 @@
+using System.Collections.Generic;
+
 namespace StoreModels
 {
     public class LineItem
     {   
+        public List<PurchaseOrder> Orders { get; set; }
+        public Product Product { get; set; }
         public int LineId    { get; set; }
         public int OrderId {get; set;}
-        public int ProdId { get; set; }
+        public int ProductId { get; set; }
         public int Quantity    { get; set; }
 
-        public virtual PurchaseOrder LineOrder {get; set;}
-        public virtual Product LineProd {get; set;}
-        
-    
-        
+           
        
     }    
 }

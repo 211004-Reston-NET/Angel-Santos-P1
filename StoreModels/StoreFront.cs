@@ -10,6 +10,7 @@ namespace StoreModels
         private string _address;
         private string _city;
         private string _state;
+        public List<PurchaseOrder> Orders { get; set; }
         public int StoreId { get; set; }
         public string StoreName 
         {
@@ -63,8 +64,7 @@ namespace StoreModels
             }
         }
 
-        public virtual ICollection<Inventory> StoreInv { get; set; }
-        public virtual ICollection<PurchaseOrder> StoreOrder { get; set; }
+        
 
         public override string ToString()
         {

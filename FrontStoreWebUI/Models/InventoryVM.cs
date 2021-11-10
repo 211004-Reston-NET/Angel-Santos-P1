@@ -8,7 +8,7 @@ namespace FrontStoreWebUI.Models
         {
             this.InvId = p_inv.InvId;
             this.StoreId = p_inv.StoreId;
-            this.ProdId = p_inv.ProdId;
+            this.ProdId = p_inv.ProductId;
             this.Quantity = p_inv.Quantity;
             
         }

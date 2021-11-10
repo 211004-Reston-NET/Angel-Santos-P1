@@ -8,7 +8,7 @@ namespace FrontStoreWebUI.Models
         {
             this.LineId = p_line.LineId;
             this.OrderId = p_line.OrderId;
-            this.ProdId = p_line.ProdId;
+            this.ProdId = p_line.ProductId;
             this.Quantity = p_line.Quantity;
 
         }

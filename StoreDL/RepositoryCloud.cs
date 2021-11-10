@@ -17,13 +17,23 @@ namespace StoreDL
         {
             _context = p_context;
         }
-        public Product ItemIdCollection(int p_Id)
+        /*public Product ItemIdCollection(int p_Id)
         {
             var item = _context.Products
-            .Include(a => a.Inventories)
+            .Include(a => a.Inventory)
             .ThenInclude(b => b.LineItems)
             .Single(i => i.ProductId.Equals(p_Id));
             return item;
+        }
+        */
+
+        public PurchaseOrder Checkout(PurchaseOrder p_purc)
+        {
+            _context.PurchaseOrders.Add(p_purc);
+
+            //Save changes to DB
+            _context.SaveChanges();
+            return p_purc;
         }
         public Product AddProduct(Product p_product)
         {
@@ -59,17 +69,16 @@ namespace StoreDL
             return p_lin;
         }
 
-        
-
-       /* public Inventory ReplenishInv(Inventory p_inv)
+        public Inventory DecreaseInventory(Inventory p_inv)
         {
+           
             _context.Inventories.Update(p_inv);
 
             _context.SaveChanges();
-            
+
             return p_inv;
         }
-        */
+
 
         public Product GetProductById(int p_id)
         {
@@ -97,7 +106,7 @@ namespace StoreDL
 
 
 
-        public List<Customer> GetAllCustomer(Customer p_cust)
+        public List<StoreModels.Customer> GetAllCustomer(Customer p_cust)
         {
             return _context.Customers.ToList();
         }
@@ -127,14 +136,17 @@ namespace StoreDL
             // return listOfProd;
         }
 
-        public List<StoreFront> GetAllStore()
+        public List<StoreModels.StoreFront> GetAllStore()
         {
             return _context.StoreFronts.ToList();
         }
 
         public StoreFront AddStore(StoreFront p_store)
         {
-            throw new System.NotImplementedException();
+            _context.StoreFronts.Add(p_store);
+            _context.SaveChanges();
+            
+            return p_store;
         }
 
         public List<Customer> GetAllCustomer()
@@ -148,6 +160,16 @@ namespace StoreDL
         }
     }
 }
+
+ /* public Inventory ReplenishInv(Inventory p_inv)
+        {
+            _context.Inventories.Update(p_inv);
+
+            _context.SaveChanges();
+            
+            return p_inv;
+        }
+        */
 
 /*
         public List<Product> GetProductId(int p_id)

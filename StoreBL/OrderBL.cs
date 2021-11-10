@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using StoreDL;
 using StoreModels;
 
@@ -13,22 +13,19 @@ namespace StoreBL
             _repo = p_repo;
         }
 
-        public PurchaseOrder AddPurchaseOrder(PurchaseOrder p_purch)
-        {
-            throw
+        public PurchaseOrder Checkout(PurchaseOrder p_purc)
             {
-                Console.WriteLine("Not Implemented");
+            return _repo.Checkout(p_purc);
             }
-
-        }
+        /*
         public PurchaseOrder QuantityById(PurchaseOrder p_inv, int p_howMuchAdded)
         {
             p_inv.Quantity += p_howMuchAdded;
 
             return _repo.ReplenishInv(p_inv);
         }
+        */
 
         
     }
 }
-*/

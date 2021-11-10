@@ -7,7 +7,7 @@ namespace FrontStoreWebUI.Models
         public PurchaseOrderVM(PurchaseOrder p_pur)
         {
             this.OrderId = p_pur.OrderId;
-            this.StoreId = p_pur.StoreId;
+            this.StoreId = p_pur.StoreFrontId;
             this.CustomerId = p_pur.CustomerId;
             this.TotalPrice = p_pur.TotalPrice;
 

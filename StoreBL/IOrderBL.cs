@@ -1,10 +1,9 @@
-/*using StoreModels;
+using StoreModels;
 
 namespace StoreBL
 {
     public interface IOrderBL
     {
-        PurchaseOrder AddPurchaseOrder(PurchaseOrder p_purch);
+        PurchaseOrder Checkout(PurchaseOrder p_purch);
     }
 }
-*/

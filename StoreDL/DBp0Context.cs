@@ -65,7 +65,7 @@ namespace StoreDL
 
                 entity.Property(e => e.InvId).HasColumnName("Inv_Id");
                 entity.Property(e => e.StoreId).HasColumnName("Store_Id");
-                entity.Property(e => e.ProdId).HasColumnName("Prod_Id");
+                entity.Property(e => e.ProductId).HasColumnName("Prod_Id");
                 entity.Property(e => e.Quantity).HasColumnName("Quantity");
             });
 
@@ -77,7 +77,7 @@ namespace StoreDL
                 entity.ToTable("Line_Item");
                 entity.Property(e => e.LineId).HasColumnName("Line_Id");
                 entity.Property(e => e.OrderId).HasColumnName("Order_Id");
-                entity.Property(e => e.ProdId).HasColumnName("Prod_Id");
+                entity.Property(e => e.ProductId).HasColumnName("Prod_Id");
                 entity.Property(e => e.Quantity).HasColumnName("Quantity");
                 
             });
@@ -123,7 +123,7 @@ namespace StoreDL
 
                 entity.Property(e => e.CustomerId).HasColumnName("Customer_Id");
 
-                entity.Property(e => e.StoreId).HasColumnName("Store_Id");
+                entity.Property(e => e.StoreFrontId).HasColumnName("Store_Id");
 
                 entity.Property(e => e.TotalPrice)
                     .HasColumnType("decimal(18, 0)")

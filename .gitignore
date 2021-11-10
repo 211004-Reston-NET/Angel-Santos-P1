@@ -4,6 +4,7 @@ obj
 .vscode
 .SQLDBScript
 .P1Requirements
+publish
 appsetting.json
 appsettings.json
 appsettings.Development.json

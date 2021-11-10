@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 
@@ -11,7 +12,7 @@ namespace StoreModels
         private string _lastName;
         private string _streetAddress;
         private string _email;
-           
+        public List<PurchaseOrder> Orders { get; set; }
         public int CustomerId { get; set; }
         public string FirstName 
         { 

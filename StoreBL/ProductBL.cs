@@ -16,25 +16,16 @@ namespace StoreBL
             _repo = p_repo;
         }
 
-        public Product ItemIdCollection(int p_Id)
+        /*public Product ItemIdCollection(int p_Id)
         {
             return _repo.ItemIdCollection(p_Id);
         }
+        */
         public Product AddProduct(Product p_product)
         {
             return _repo.AddProduct(p_product);
         }
-        public void PrintAllProducts()
-        {
-            List<Product> listOfProduct = GetAllProducts();
-                foreach (Product prod in listOfProduct)
-                    {
-                    Console.WriteLine("====================");
-                    Console.WriteLine(prod);
-                    Console.WriteLine("====================");
-                    }
-                    Console.WriteLine("====================");
-        }
+        
 
         public List<Product> GetAllProducts()
         {
@@ -48,6 +39,30 @@ namespace StoreBL
 
             return listOfProduct;
         }
+
+        
+
+        public List<Product> GetProductName(string p_name)
+        {
+            List<Product> listOfProduct = _repo.GetAllProduct();
+            return listOfProduct.Where(prod => prod.ItemName.ToLower().Contains(p_name.ToLower())).ToList();
+        }
+
+    }
+}
+
+/*public void PrintAllProducts()
+        {
+            List<Product> listOfProduct = GetAllProducts();
+                foreach (Product prod in listOfProduct)
+                    {
+                    Console.WriteLine("====================");
+                    Console.WriteLine(prod);
+                    Console.WriteLine("====================");
+                    }
+                    Console.WriteLine("====================");
+        }
+        */
 
         //Will select all tables that reference ProductId
         
@@ -63,12 +78,3 @@ namespace StoreBL
             return prodFound;
         }
         */
-
-        public List<Product> GetProductName(string p_name)
-        {
-            List<Product> listOfProduct = _repo.GetAllProduct();
-            return listOfProduct.Where(prod => prod.ItemName.ToLower().Contains(p_name.ToLower())).ToList();
-        }
-
-    }
-}

@@ -13,7 +13,9 @@ namespace ModelTest
         {
             _options = new DbContextOptionsBuilder<DBp0Context>()
                         .UseSqlite("Filename = Test.db").Options; //UseSqlite() method will create an in memory database for us - Test.db
+                        Seed();
         }
+
         [Fact]
         public void GetAllStore()
         {
@@ -27,7 +29,7 @@ namespace ModelTest
 
                 //Assert
                 Assert.Equal(2, test.Count);
-                Assert.Equal("Angel's Store", test[0].StoreName);
+                Assert.Equal("Toy Store", test[0].StoreName);
 
             }
         }
@@ -65,34 +67,42 @@ namespace ModelTest
                 Assert.Equal("New Jersey", result.State);
             }
         }
-    }
-}
-
-        /*
-         * Return to Test 
-
-                private void Seed()
-                {
-                    using (var context = new DBp0Context(_options))
-                    { 
-                        //Make sure inmemory DB gets deleted and recreates
-                        // To not show previous test.
-                        //'Create' pristine new DB for tests
+            
+        private void Seed()
+        {
+            using (var context = new DBp0Context(_options))
+                { 
+                
+                //Make sure inmemory DB gets deleted and recreates
+                // To not show previous test.
+                //'Create' pristine new DB for tests
                     context.Database.EnsureDeleted();
                     context.Database.EnsureCreated();
 
-                        context.StoreFronts.AddRange
-                        (
-                            new StoreFront
-                            {
-                                StoreName = "Angel's Store",
-                                Address = "12 Jersey Place",
-                                City = "Jersey City",
-                                State = "NJ",
-                                Products = new List<Product>
-                            
-                            {
-                                    new Product
+                    context.StoreFronts.AddRange
+                    (
+                        new StoreFront
+                        {
+                            StoreName = "Angel's New Store",
+                            Address = "1 Somewhere Rd.",
+                            City = "Horchata City",
+                            State = "New Jersey",   
+                        },
+                        new StoreFront
+                        {
+                            StoreName = "Toy Store",
+                            Address = "234 Road",
+                            City = "That City",
+                            State = "New York"
+                        }
+                    );
+                }
+        }
+    }
+}
+
+
+                                   /*new Product
                                     {
                                         ItemName = "VR-Machine",
                                         Category = "Game Console",
@@ -106,7 +116,12 @@ namespace ModelTest
                                         Category = "Party",
                                         Description = ""
                                     }
-                            */
+    
+*/
+        
+
+                
+                            
                 
             
         
