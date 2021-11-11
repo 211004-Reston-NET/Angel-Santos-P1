@@ -5,6 +5,7 @@ using StoreDL;
 using StoreModels;
 using Xunit;
 
+//Must add Store Ids
 namespace ModelTest
 {
     public class RepositoryTest
@@ -87,14 +88,14 @@ namespace ModelTest
                             StoreName = "Angel's New Store",
                             Address = "1 Somewhere Rd.",
                             City = "Horchata City",
-                            State = "New Jersey",   
+                            State = "NJ",   
                         },
                         new StoreFront
                         {
                             StoreName = "Toy Store",
                             Address = "234 Road",
                             City = "That City",
-                            State = "New York"
+                            State = "NY"
                         }
                     );
                 }
