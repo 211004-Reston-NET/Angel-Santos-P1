@@ -14,7 +14,7 @@ namespace StoreDL
         PurchaseOrder Checkout(PurchaseOrder p_purchase);
         LineItem AddQuantityById(LineItem p_lin);
         Product AddProduct(Product p_product);
-       
+        Customer DeleteCustomer(Customer p_customer);
         Inventory GetItemById(int p_id);
         Inventory DecreaseInventory(Inventory p_inv);
         Product GetProductById(int p_id);

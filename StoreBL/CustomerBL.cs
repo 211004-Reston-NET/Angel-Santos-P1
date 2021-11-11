@@ -18,6 +18,11 @@ namespace StoreBL
             {
             return _repo.AddCustomer(p_customer);
             }
+        
+        public Customer DeleteCustomer(Customer p_customer)
+            {
+            return _repo.DeleteCustomer(p_customer);
+            }
         public List<Customer> GetAllCustomers()
         {
             

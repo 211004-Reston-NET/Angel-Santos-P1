@@ -54,6 +54,13 @@ namespace StoreDL
             _context.SaveChanges();
             return p_customer;
         }
+        public Customer DeleteCustomer(Customer p_customer)
+        {
+            _context.Customers.Remove(p_customer);
+
+            _context.SaveChanges();
+            return p_customer;
+        }
 
         public LineItem AddQuantityById(LineItem p_lin)
         {

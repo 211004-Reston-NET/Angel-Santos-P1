@@ -30,6 +30,13 @@
                 <td>@Html.DisplayFor(modelItem => item.StreetAddress)</td>
                 <td>@Html.DisplayFor(modelItem => item.Email)</td>
                 <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                <td>
+                    <!--First parameter of ActionLink is the name it will give for this element -->
+                    <!--Second parameter will point to the action of the restaurant controller-->
+                    <!--Third parameter will give the information from the view to the controller-->
+                    <button class="btn btn-danger">@Html.ActionLink("Create", "Create", new { p_cust = item.CustomerId }, new { @style = "color: white;" })</button>
+                    
+                </td>
             </tr>
             }
 
