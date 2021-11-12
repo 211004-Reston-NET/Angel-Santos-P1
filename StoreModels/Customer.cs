@@ -11,7 +11,7 @@ namespace StoreModels
         private string _firstName;
         private string _lastName;
         private string _streetAddress;
-        private string _email;
+        //private string _email;
         public List<PurchaseOrder> Orders { get; set; }
         public int CustomerId { get; set; }
         public string FirstName 
@@ -63,9 +63,9 @@ namespace StoreModels
         
         
             
-        public override string ToString()
-        {
-            return $"First Name: {FirstName}\nLast Name:{LastName}\nStreet Address: {StreetAddress}\nEmail: {Email}";
-        }
+        //public override string ToString()
+        //{
+        //    return $"First Name: {FirstName}\nLast Name:{LastName}\nStreet Address: {StreetAddress}\nEmail: {Email}";
+        //}
     }
 }
