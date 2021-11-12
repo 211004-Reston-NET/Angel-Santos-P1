@@ -31,6 +31,12 @@ namespace FrontStoreWebUI.Controllers
         {
             return View();
         }
+        
+        [HttpGet]
+        public IActionResult Search()
+        {
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Create(CustomerVM custVM)
@@ -56,6 +62,13 @@ namespace FrontStoreWebUI.Controllers
             return View();
         }
 
+        /*public IActionResult Search(CustomerVM custVM)
+        {
+            _custBL.GetCustomerName
+            return View();
+        }
+        */
+
         // GET: CustomerController/Details/5
         public ActionResult Details(int id)
         {
@@ -63,9 +76,13 @@ namespace FrontStoreWebUI.Controllers
         }
 
 
-        
+        public ActionResult Delete(int p_id)
+        {
+            //Passing the restaurant to the delete view
+            return View(new CustomerVM(_custBL.GetCustomerById(p_id)));
+        }
 
-        
+
 
         // GET: CustomerController/Edit/5
         public ActionResult Edit(int id)
@@ -89,10 +106,10 @@ namespace FrontStoreWebUI.Controllers
         }
 
         // GET: CustomerController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+        //public ActionResult Delete(int id)
+        //{
+       //     return View();
+       // }
 
         // POST: CustomerController/Delete/5
         [HttpPost]

@@ -6,7 +6,7 @@ namespace StoreDL
     public interface IRepository
     {
         StoreFront AddStore(StoreFront p_store);
-        List<Customer> GetAllCustomer();
+        List<Customer> GetAllCustomers();
         List<Product> GetAllProduct();
         List<StoreFront> GetAllStore();
         Customer AddCustomer(Customer p_customer);
@@ -17,12 +17,8 @@ namespace StoreDL
         Inventory GetItemById(int p_id);
         Inventory DecreaseInventory(Inventory p_inv);
         Product GetProductById(int p_id);
-
-        // List<Inventory> GetAllLineItemInventory(Product p_prod);
-        //Product ItemIdCollection(int p_id);
-
-        // Inventory ReplenishInv(Inventory p_inv);
-
-        //PurchaseOrder AddPurchaseOrder(PurchaseOrder p_order);
+        Customer GetCustomerById(int p_id);
+        List<Customer> GetCustomerByFirstName(string p_cust);
+        List<Customer> GetCustomerByLastName(string p_cust);
     }
 }

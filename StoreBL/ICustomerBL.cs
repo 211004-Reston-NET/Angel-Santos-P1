@@ -7,6 +7,8 @@ namespace StoreBL
     {
         Customer CustomerSignUp(Customer p_customer);
         List<Customer> GetAllCustomers();
-        List<Customer> GetCustomerName(string p_customerfname);
+        Customer GetCustomerById(int p_id);
+        List<Customer> GetCustomerByFirstName(string p_cust);
+        List<Customer> GetCustomerByLastName(string p_cust);
     }
 }

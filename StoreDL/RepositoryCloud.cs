@@ -17,7 +17,7 @@ namespace StoreDL
         {
             _context = p_context;
         }
-       
+    
 
         public void Sale()
         {
@@ -32,7 +32,7 @@ namespace StoreDL
             //IEnumerable<PurchaseOrder> result = _context.ExecuteQuery<DBp0Context>
             var result = _context.Customers.FromSqlRaw(q);
             
-        }
+            }
         }
 
         public PurchaseOrder Checkout(PurchaseOrder p_purc)
@@ -63,10 +63,35 @@ namespace StoreDL
             _context.SaveChanges();
             return p_customer;
         }
+
+        public Customer GetCustomerById(int p_id)
+        {
+            return _context.Customers
+                        .AsNoTracking() //This makes it so it stops tracking the entity once it finds the review
+                        .FirstOrDefault(cus => cus.CustomerId == p_id);
+        }
+
+        public List<Customer> GetCustomerByFirstName(string p_cust)
+        {
+            return _context.Customers
+                    .Where(cust => cust.FirstName
+                    .ToLower()
+                    .Contains(p_cust.ToLower()))
+                    .ToList();
+    
+        }
+
+        public List<Customer> GetCustomerByLastName(string p_cust)
+        {
+            return _context.Customers
+                    .Where(cust => cust.LastName
+                    .ToLower().Contains(p_cust.ToLower()))
+                    .ToList();
+        }
+
         public Customer DeleteCustomer(Customer p_customer)
         {
             _context.Customers.Remove(p_customer);
-
             _context.SaveChanges();
             return p_customer;
         }
@@ -111,15 +136,6 @@ namespace StoreDL
             .FirstOrDefault(inv => inv.InvId == p_id);
             
         }
-       
-
-
-       /* public List<Inventory> GetAllLineItemInventory(Product p_prod)
-        {
-            return _context.LineItems.ToList(); //Convert it into List
-        }
-        */
-
 
 
         public List<StoreModels.Customer> GetAllCustomer(Customer p_cust)
@@ -165,7 +181,7 @@ namespace StoreDL
             return p_store;
         }
 
-        public List<Customer> GetAllCustomer()
+        public List<Customer> GetAllCustomers()
         {
             return _context.Customers.ToList();
         }
@@ -173,52 +189,3 @@ namespace StoreDL
     }
 }
 
-
- /* public Inventory ReplenishInv(Inventory p_inv)
-        {
-            _context.Inventories.Update(p_inv);
-
-            _context.SaveChanges();
-            
-            return p_inv;
-        }
-        */
-
-/*
-        public List<Product> GetProductId(int p_id)
-        {
-            List<Product> listOfProduct = _repo.GetAllProduct();
-            return listOfProduct.Where(prod => prod.ProductIdContains(p_id)).ToList();
-        }
-
-*/
-/*    
-        public Model.PurchaseOrder AddPurchaseOrder(Model.PurchaseOrder p_order)
-        {   
-            _context.PurchaseOrders.Add
-            (
-                new Entity.PurchaseOrder()
-                {
-                    OrderId = p_order.OrderId,
-                    LocationId = p_order.LocationId,
-                    CustomerId = p_order.CustomerId,
-                    ItemName = p_order.ItemName,
-                    TotalPrice = p_order.Price
-                }
-            );
-
-            //Save changes to DB
-            _context.SaveChanges();
-            return p_order;
-        }
-*/
-
- /*public Product ItemIdCollection(int p_Id)
-        {
-            var item = _context.Products
-            .Include(a => a.Inventory)
-            .ThenInclude(b => b.LineItems)
-            .Single(i => i.ProductId.Equals(p_Id));
-            return item;
-        }
-        */

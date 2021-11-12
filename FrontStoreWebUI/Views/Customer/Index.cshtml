@@ -7,27 +7,28 @@
 
 @model IEnumerable<FrontStoreWebUI.Models.CustomerVM>
 
-    <h1 class="display-4">List of Customers </h1>
+<h1 class="display-4">List of Customers </h1>
 
-    <a class="btn btn-success text-white" asp-controller="Customer" asp-action="Create">Add Customer</a>
-<br/>
-<br/>
+<a class="btn btn-success text-white" asp-controller="Customer" asp-action="Create">Add Customer</a>
+<a class="btn btn-success text-white" asp-controller="Customer" asp-action="Search">Search Customer</a>
+<br />
+<br />
 
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th> First Name</th>
-                <th> Last Name </th>
-                <th> Street Address </th>
-                <th> Email </th>
-                <th> Phone </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th> First Name</th>
+            <th> Last Name </th>
+            <th> Street Address </th>
+            <th> Email </th>
+            <th> Phone </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
 
-            @foreach (CustomerVM item in Model)
-            {
+        @foreach (CustomerVM item in Model)
+        {
             <tr>
 
                 <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
@@ -35,16 +36,16 @@
                 <td>@Html.DisplayFor(modelItem => item.StreetAddress)</td>
                 <td>@Html.DisplayFor(modelItem => item.Email)</td>
                 <td>@Html.DisplayFor(modelItem => item.Phone)</td>
-                
-                    <!--First parameter of ActionLink is the name it will give for this element -->
-                    <!--Second parameter will point to the action of the restaurant controller-->
-                    <!--Third parameter will give the information from the view to the controller-->           
-                    
-                
-            </tr>
-            }
 
-        </tbody>
-    </table>
+                <!--First parameter of ActionLink is the name it will give for this element -->
+                <!--Second parameter will point to the action of the restaurant controller-->
+                <!--Third parameter will give the information from the view to the controller-->
+
+
+            </tr>
+        }
+
+    </tbody>
+</table>
 
 
