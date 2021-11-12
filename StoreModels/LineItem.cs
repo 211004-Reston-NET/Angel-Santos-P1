@@ -7,7 +7,6 @@ namespace StoreModels
         public List<PurchaseOrder> Orders { get; set; }
         public Product Product { get; set; }
         public int LineId    { get; set; }
-        public int OrderId {get; set;}
         public int ProductId { get; set; }
         public int Quantity    { get; set; }
 

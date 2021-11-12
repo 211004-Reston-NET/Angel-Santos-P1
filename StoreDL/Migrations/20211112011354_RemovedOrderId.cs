@@ -2,7 +2,7 @@
 
 namespace StoreDL.Migrations
 {
-    public partial class NewMigrationStore : Migration
+    public partial class RemovedOrderId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,7 +61,6 @@ namespace StoreDL.Migrations
                 {
                     Inv_Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(type: "int", nullable: true),
                     Store_Id = table.Column<int>(type: "int", nullable: false),
                     Prod_Id = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false)
@@ -70,11 +69,11 @@ namespace StoreDL.Migrations
                 {
                     table.PrimaryKey("PK__InvId__A2F2A30CAD3172F2", x => x.Inv_Id);
                     table.ForeignKey(
-                        name: "FK_Inventory_Product_ProductId",
-                        column: x => x.ProductId,
+                        name: "FK_Inventory_Product_Prod_Id",
+                        column: x => x.Prod_Id,
                         principalTable: "Product",
                         principalColumn: "Product_Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,8 +82,6 @@ namespace StoreDL.Migrations
                 {
                     Line_Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(type: "int", nullable: true),
-                    Order_Id = table.Column<int>(type: "int", nullable: false),
                     Prod_Id = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false)
                 },
@@ -92,11 +89,11 @@ namespace StoreDL.Migrations
                 {
                     table.PrimaryKey("PK__LineId__A2F2A30CAD3172F2", x => x.Line_Id);
                     table.ForeignKey(
-                        name: "FK_Line_Item_Product_ProductId",
-                        column: x => x.ProductId,
+                        name: "FK_Line_Item_Product_Prod_Id",
+                        column: x => x.Prod_Id,
                         principalTable: "Product",
                         principalColumn: "Product_Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -107,8 +104,7 @@ namespace StoreDL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Store_Id = table.Column<int>(type: "int", nullable: false),
                     Customer_Id = table.Column<int>(type: "int", nullable: false),
-                    Total_Price = table.Column<decimal>(type: "decimal(18,0)", nullable: false),
-                    StoreFrontStoreId = table.Column<int>(type: "int", nullable: true)
+                    Total_Price = table.Column<decimal>(type: "decimal(18,0)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -120,11 +116,11 @@ namespace StoreDL.Migrations
                         principalColumn: "Customer_Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Purchase_Order_Store_Front_StoreFrontStoreId",
-                        column: x => x.StoreFrontStoreId,
+                        name: "FK_Purchase_Order_Store_Front_Store_Id",
+                        column: x => x.Store_Id,
                         principalTable: "Store_Front",
                         principalColumn: "Store_Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -152,14 +148,14 @@ namespace StoreDL.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Inventory_ProductId",
+                name: "IX_Inventory_Prod_Id",
                 table: "Inventory",
-                column: "ProductId");
+                column: "Prod_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Line_Item_ProductId",
+                name: "IX_Line_Item_Prod_Id",
                 table: "Line_Item",
-                column: "ProductId");
+                column: "Prod_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LineItemPurchaseOrder_OrdersOrderId",
@@ -172,9 +168,9 @@ namespace StoreDL.Migrations
                 column: "Customer_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Purchase_Order_StoreFrontStoreId",
+                name: "IX_Purchase_Order_Store_Id",
                 table: "Purchase_Order",
-                column: "StoreFrontStoreId");
+                column: "Store_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

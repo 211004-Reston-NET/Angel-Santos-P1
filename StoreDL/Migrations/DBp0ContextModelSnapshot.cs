@@ -111,10 +111,6 @@ namespace StoreDL.Migrations
                         .HasColumnName("Line_Id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int")
-                        .HasColumnName("Order_Id");
-
                     b.Property<int>("ProductId")
                         .HasColumnType("int")
                         .HasColumnName("Prod_Id");

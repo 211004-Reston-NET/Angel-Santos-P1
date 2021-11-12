@@ -85,6 +85,7 @@ namespace ModelTest
                     (
                         new StoreFront
                         {
+                            StoreId = 1,
                             StoreName = "Angel's New Store",
                             Address = "1 Somewhere Rd.",
                             City = "Horchata City",
@@ -92,10 +93,19 @@ namespace ModelTest
                         },
                         new StoreFront
                         {
+                            StoreId = 2,
                             StoreName = "Toy Store",
                             Address = "234 Road",
                             City = "That City",
                             State = "NY"
+                        },
+                        new StoreFront
+                        {
+                            StoreId = 3,
+                            StoreName = "Fruit Store",
+                            Address = "1 Street",
+                            City = "NeoTokyo",
+                            State = "NC"
                         }
                     );
                 }

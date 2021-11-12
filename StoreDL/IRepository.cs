@@ -9,7 +9,6 @@ namespace StoreDL
         List<Customer> GetAllCustomer();
         List<Product> GetAllProduct();
         List<StoreFront> GetAllStore();
-       // List<Inventory> GetAllLineItemInventory(Product p_prod);
         Customer AddCustomer(Customer p_customer);
         PurchaseOrder Checkout(PurchaseOrder p_purchase);
         LineItem AddQuantityById(LineItem p_lin);
@@ -19,6 +18,7 @@ namespace StoreDL
         Inventory DecreaseInventory(Inventory p_inv);
         Product GetProductById(int p_id);
 
+        // List<Inventory> GetAllLineItemInventory(Product p_prod);
         //Product ItemIdCollection(int p_id);
 
         // Inventory ReplenishInv(Inventory p_inv);

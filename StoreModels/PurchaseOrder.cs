@@ -8,10 +8,7 @@ namespace StoreModels
 {
     public class PurchaseOrder
     {
-        private int _orderId;
-        private int _locationId;
-        private int _customerId;
-        private decimal _price;
+
         public List<LineItem> LineItem { get; set; }
         
         public int OrderId { get; set;}

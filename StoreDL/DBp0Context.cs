@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StoreModels;
+using System.Linq;
+using System.Collections.Generic;
 
 
 #nullable disable
@@ -8,7 +10,9 @@ namespace StoreDL
 {
     public partial class DBp0Context : DbContext
     {
-        
+        public DBp0Context()
+        {
+        }
 
         public DBp0Context(DbContextOptions<DBp0Context> options)
             : base(options)
@@ -76,7 +80,6 @@ namespace StoreDL
 
                 entity.ToTable("Line_Item");
                 entity.Property(e => e.LineId).HasColumnName("Line_Id");
-                entity.Property(e => e.OrderId).HasColumnName("Order_Id");
                 entity.Property(e => e.ProductId).HasColumnName("Prod_Id");
                 entity.Property(e => e.Quantity).HasColumnName("Quantity");
                 

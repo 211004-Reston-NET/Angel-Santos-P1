@@ -17,15 +17,23 @@ namespace StoreDL
         {
             _context = p_context;
         }
-        /*public Product ItemIdCollection(int p_Id)
+       
+
+        public void Sale()
         {
-            var item = _context.Products
-            .Include(a => a.Inventory)
-            .ThenInclude(b => b.LineItems)
-            .Single(i => i.ProductId.Equals(p_Id));
-            return item;
+            using (DBp0Context _context = new DBp0Context())
+           {    
+            var q = 
+            (@"
+                        SELECT *
+                        FROM Customer
+                        WHERE Customer_Id = 1"); 
+            //_context.DBp0Context _context = new DBp0Context();
+            //IEnumerable<PurchaseOrder> result = _context.ExecuteQuery<DBp0Context>
+            var result = _context.Customers.FromSqlRaw(q);
+            
         }
-        */
+        }
 
         public PurchaseOrder Checkout(PurchaseOrder p_purc)
         {
@@ -35,6 +43,7 @@ namespace StoreDL
             _context.SaveChanges();
             return p_purc;
         }
+
         public Product AddProduct(Product p_product)
         {
             _context.Products.Add(p_product);
@@ -161,12 +170,9 @@ namespace StoreDL
             return _context.Customers.ToList();
         }
 
-        public PurchaseOrder AddPurchase(PurchaseOrder p_purchase)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
+
 
  /* public Inventory ReplenishInv(Inventory p_inv)
         {
@@ -206,3 +212,13 @@ namespace StoreDL
             return p_order;
         }
 */
+
+ /*public Product ItemIdCollection(int p_Id)
+        {
+            var item = _context.Products
+            .Include(a => a.Inventory)
+            .ThenInclude(b => b.LineItems)
+            .Single(i => i.ProductId.Equals(p_Id));
+            return item;
+        }
+        */
