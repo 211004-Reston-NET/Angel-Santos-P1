@@ -17,9 +17,9 @@ namespace StoreModels
             get { return _storeName; }
             set 
             {
-                if (!Regex.IsMatch(value, @"^[A-Za-z .]+$"))
+                if (string.IsNullOrEmpty(value))
                 {       
-                    throw new Exception("   State must contain only letters.    ");
+                    throw new Exception("   Store Name cannot be empty.    ");
                 }
                 _storeName = value;
             }
@@ -33,7 +33,7 @@ namespace StoreModels
                 {       
                     throw new Exception
                     (
-                        "   Street Address cannot be left empty.     "
+                        "   Street Address cannot be empty.     "
                     );
                 }
                 _address = value;    
@@ -44,9 +44,9 @@ namespace StoreModels
             get { return _city; }
             set 
             {
-                if (!Regex.IsMatch(value, @"^[A-Za-z .]+$" ))
+                if (string.IsNullOrEmpty(value))
                 {       
-                    throw new Exception("   City must contain only letters.    ");
+                    throw new Exception("   City cannot be empty.    ");
                 }
                 _city = value;
             }
@@ -56,9 +56,9 @@ namespace StoreModels
             get { return _state; }
             set 
             {
-                if (!Regex.IsMatch(value, @"^[A-Za-z .]+$"))
+                if (string.IsNullOrEmpty(value))
                 {       
-                    throw new Exception("   State must contain only letters.    ");
+                    throw new Exception("   State cannot be empty.    ");
                 }
                 _state = value;
             }
@@ -66,10 +66,11 @@ namespace StoreModels
 
         
 
-        public override string ToString()
+        /*public override string ToString()
         {
             return $"Name: {StoreName}\nStreet Address: {Address}\nCity: {City}\nState: {State}";
         }
+        */
 
     }
 }

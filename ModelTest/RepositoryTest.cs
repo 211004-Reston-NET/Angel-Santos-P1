@@ -1,4 +1,4 @@
-/*using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using StoreDL;
@@ -30,8 +30,8 @@ namespace ModelTest
                 var test = repo.GetAllStore();
 
                 //Assert
-                Assert.Equal(2, test.Count);
-                //Assert.Equal("Toy Store", test[0].StoreName);
+                Assert.Equal(3, test.Count);
+                Assert.Equal("Angel's New Store", test[0].StoreName);
 
             }
         }
@@ -107,7 +107,51 @@ namespace ModelTest
                             City = "NeoTokyo",
                             State = "NC"
                         }
+                        
                     );
+                    
+                    context.Customers.AddRange
+                    (
+                        new Customer
+                        {
+                            CustomerId = 100,
+                            FirstName = "Billy",
+                            LastName = "TheKid",
+                            StreetAddress = "123 West Avenue",
+                            Email = "bilkid@gslingr.net",
+                            Phone = 555234567
+
+                        },
+                        new Customer
+                        {
+                            CustomerId = 200,
+                            FirstName = "Sal",
+                            LastName = "Mon",
+                            StreetAddress = "456 River Road",
+                            Email = "sal@glorp.com",
+                            Phone = 555765432
+
+                        },
+                        new Customer
+                        {
+                            CustomerId = 300,
+                            FirstName = "Jim",
+                            LastName = "Deane",
+                            StreetAddress = "890 Creek Drive",
+                            Email = "mtpapa@country.net",
+                            Phone = 555098654
+
+                        }
+                        );
+                        context.Products.AddRange
+                        (
+                            {
+                                
+                            }
+                        )
+                        
+                    
+                    context.SaveChanges();
                 }
         }
     }

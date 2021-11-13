@@ -1,4 +1,3 @@
-using System;
 using StoreModels;
 using Xunit;
 
@@ -10,57 +9,81 @@ namespace ModelTest
         /// Will test if the city property will set with valid data 
           [Fact] // Fact is a testcase that doesn't have any parameters
           //Runs only once.
-        public void NameSetValidData() 
+        public void IdSetValidData() 
         {
             //Arrange
-        Customer _custTest = new Customer();
-        string name = "Birdman";
-      
-        
-
-            //Act
-        _custTest.FirstName = name; 
-   
-
-            //Assert
-        Assert.NotNull(_custTest.FirstName);
-        Assert.Equal(_custTest.FirstName, name);
-      
-        
-        }
-          
-
-        /// <summary>
-        /// Will test for exception from Name Property 
-        /// for invalid data invalid data - not string.
-        /// </summary>
-        [Theory] 
-        // Theory creates a parameter test case 
-        // InlineData is data passed to parameter of test Method         
-        [InlineData("21#d")] 
-        [InlineData("@birdland.net.net@tdc")]
-        [InlineData("@birdt.net@tdc")]
-        [InlineData("@birdland.net.ntdc")]
-        [InlineData("rdland.net.net@tdc")] //More test methods may be added
-        [InlineData("ethin!g.net")]
-        [InlineData("1234emilsomethin$gnet")]  
-        [InlineData("s@cg.net")]
-        [InlineData("s@c@g.net")]
-        
-        
-        public void FailIfInvalid(string p_input)
-        {//Arrange
             Customer _custTest = new Customer();
+            int id = 1234;
             
-            //Act & Assert
-            //Throws method will only pass if the code you did will
-            //give an Exception
-             
-        Assert.Throws<Exception>(() => _custTest.FirstName = p_input); 
-            // Because the Inline Data are strings - the result is Failed: 4; 
-            // None of them returned an exception as the 'Act & Assert' method specified.
-            // Their data was valid - so they are Valid Data
+                //Act
+            _custTest.CustomerId = id;
+
+                //Assert
+            Assert.Equal(_custTest.CustomerId, id);
+    
+        }    
+
+        [Fact]
+        public void SetValidFirstName() 
+        {
+            Customer _custTest = new Customer();
+            string fname = "Sam";
+
+            _custTest.FirstName = fname;
+
+            Assert.NotNull(_custTest.FirstName);
+            Assert.Equal(_custTest.FirstName, fname);
+
+        }
+
+        [Fact]
+        public void SetValidLastName() 
+        {
+            Customer _custTest = new Customer();
+            string lname = "Wise";
+
+            _custTest.LastName = lname;
+
+            Assert.NotNull(_custTest.LastName);
+            Assert.Equal(_custTest.LastName, lname);
+
+        }
+
+        [Fact]
+        public void SetValidStreet() 
+        {
+            Customer _custTest = new Customer();
+            string street = "123 Shire Road";
+
+            _custTest.StreetAddress = street;
+
+            Assert.NotNull(_custTest.StreetAddress);
+            Assert.Equal(_custTest.StreetAddress, street);
+        }
+
+        [Fact]
+        public void SetValidEmail() 
+        {
+            Customer _custTest = new Customer();
+            string email = "samwise@meshire.net";
+
+            _custTest.Email = email;
+
+            Assert.NotNull(_custTest.Email);
+            Assert.Equal(_custTest.Email, email);
+        }
+
+        [Fact]
+        public void SetValidPhone() 
+        {
+            Customer _custTest = new Customer();
+            int phone = 555123456;
+
+            _custTest.Phone = phone;
+
+            Assert.Equal(_custTest.Phone, phone);
         }
     }
 }
+        
 
