@@ -62,12 +62,17 @@ namespace FrontStoreWebUI.Controllers
             return View();
         }
 
-        /*public IActionResult Search(CustomerVM custVM)
+        [HttpPost]
+        public IActionResult Search(string p_cust)
         {
-            _custBL.GetCustomerName
-            return View();
+
+            return View(_custBL.GetCustomerByFirstName(p_cust)
+                        .Select(cust => new CustomerVM(cust))
+                        .ToList()
+            );
         }
-        */
+        
+
 
         // GET: CustomerController/Details/5
         public ActionResult Details(int id)
@@ -105,6 +110,7 @@ namespace FrontStoreWebUI.Controllers
             }
         }
 
+
         // GET: CustomerController/Delete/5
         //public ActionResult Delete(int id)
         //{
@@ -124,6 +130,12 @@ namespace FrontStoreWebUI.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)
+        {
+            return "From [HttpPost]Index: filter on " + searchString;
         }
     }
 }

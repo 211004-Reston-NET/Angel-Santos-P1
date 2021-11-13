@@ -19,6 +19,8 @@ namespace StoreBL
            return _repo.GetItemById(p_id);
         }
 
+        
+
         public Inventory DecreaseInventory(Inventory p_inv, int p_dec)
         {
            
@@ -39,6 +41,11 @@ namespace StoreBL
             
             return _repo.ShowInventory();
         
+        }
+
+        public List<Inventory> AllItemStoreInfo(int p_id)
+        {
+            return _repo.AllItemStoreInfo(p_id);
         }
         
         

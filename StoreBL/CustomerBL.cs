@@ -43,12 +43,19 @@ namespace StoreBL
 
         }
         */
-        public List<Customer> GetCustomerByNames(string p_cust, string p_cust1)
+        /*public List<Customer> GetCustomerByNames(string p_cust, string p_cust1)
         {
             List<Customer> listOfCustomer = _repo.GetAllCustomers();
-            return listOfCustomer.Where(cust => cust.FirstName.ToLower().Contains(p_cust.ToLower()) && cust.LastName.ToLower().Contains(p_cust.ToLower())).ToList();
+            return listOfCustomer.Where(cust => cust.FirstName.
+                                                    ToLower().
+                                                    Contains(p_cust.ToLower()) 
+                                            && cust.LastName.
+                                                    ToLower().
+                                                    Contains(p_cust.ToLower())).
+                                                    ToList();
                                 //.Where(cust => cust.LastName.ToLower().Contains(p_cust1.ToLower())).ToList();
         }
+        */
         public List<Customer> GetCustomerByFirstName(string p_cust)
         {
             List<Customer> listOfCustomer = _repo.GetAllCustomers();

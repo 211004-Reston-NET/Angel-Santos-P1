@@ -9,7 +9,9 @@ namespace StoreBL
         StoreFront AddStore(StoreFront p_store);
         List<StoreFront> GetAllStore();
         List<StoreFront> GetStoreName(string p_name);
-
+        List<Inventory> InventoryByStoreId(int p_id);
+        
+        
     }
 }
 

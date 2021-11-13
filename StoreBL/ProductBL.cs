@@ -40,7 +40,27 @@ namespace StoreBL
             return listOfProduct;
         }
 
+        public Product GetProductById(int p_id)
+        {
+           return _repo.GetProductById(p_id);
+        }
+
         
+
+        /*public Product ProductsByStoreId(int p_id)
+        {
+            List<Product> listOfProduct = _repo.ProductsByStoreId(p_id);
+            return listOfProduct.Where(store => store.StoreId.ToLower().Contains(p_name.ToLower())).ToList();
+
+        }
+
+       /*public Tuple<List<Product>, double> ProductsByStoreId(int p_id)
+        {
+            List<Product> listOfProduct = _repo.ProductByStoreId(p_id);
+            double 
+            return _repo.ProductsByStoreId(p_storeId);
+        }
+        */
 
         public List<Product> GetProductName(string p_name)
         {

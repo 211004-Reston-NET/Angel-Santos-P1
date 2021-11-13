@@ -161,6 +161,36 @@ namespace ModelTest
                 Assert.Equal("NJ", result.State);
             }
         }
+
+        
+
+        //[Theory]
+        //[InlineData("l")]
+       /* public void GetCustomersByFName(string p_cust)
+        {
+            using (var context = new DBp0Context(_options))
+            {
+                //Arrange
+                IRepository repo = new RepositoryCloud(context);
+                
+                //= context."l";
+
+                //Act
+                //List<Customer> listOfCustomer = repo.GetCustomerByFirstName("l");
+                var test = repo.GetCustomerByFirstName(p_cust);
+
+                //Assert.NotNull(() => _custTest.FirstName = p_cust);
+                //Assert.Contains(p_cust);
+                //Assert
+                //Assert.Contains("l", test.Customer.FirstName);
+               // Assert.Equal(1, listOfCustomer.Count);
+                //Assert.Equal(2, test[0].CustomerId);
+              //  Assert.Equal("l", test.FindAll);
+               // Assert.Equal(101, test[0].FirstName);
+
+            }
+        }
+        */
             
         private void Seed()
         {

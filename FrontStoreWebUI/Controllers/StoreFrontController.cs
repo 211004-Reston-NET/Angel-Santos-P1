@@ -25,6 +25,12 @@ namespace FrontStoreWebUI.Controllers
             );
         }
 
+        public ActionResult StoreInv(int p_id)
+        {
+            return View(_storeBL.InventoryByStoreId(p_id)
+                .Select(inv => new InventoryVM(inv)).ToList());
+        }
+
         // GET: StoreFrontController/Details/5
         public ActionResult Details(int id)
         {

@@ -15,23 +15,37 @@ namespace StoreBL
             _repo = p_repo;
         }
 
+        public StoreFront StoreById(int p_id)
+        {
+            return _repo.StoreById(p_id);
+        }
+
+        public List<StoreFront> GetStoreName(string p_name)
+        {
+            List<StoreFront> listOfStore = _repo.GetAllStore();
+            return listOfStore.Where(store => store.StoreName.ToLower().Contains(p_name.ToLower())).ToList();
+        }
+
         //Add Methods
         public StoreFront AddStore(StoreFront p_store)
         {
             return _repo.AddStore(p_store);
         }
 
-        
         public List<StoreFront> GetAllStore()
         {
-           
             return _repo.GetAllStore();
         }
-        public List<StoreFront> GetStoreName(string p_name)
+        
+
+
+        public List<Inventory> InventoryByStoreId(int p_id)
         {
-            List<StoreFront> listOfStore = _repo.GetAllStore();
-            return listOfStore.Where(store => store.StoreName.ToLower().Contains(p_name.ToLower())).ToList();
+            return _repo.InventoryByStoreId(p_id);
         }
+
+        
+
 
         //public List<StoreFront> StockInventory(StoreFront s)
         //{

@@ -18,27 +18,40 @@ namespace StoreDL
             _context = p_context;
         }
     
+        
+        public StoreFront StoreById(int p_id)
+        {
+            return _context.StoreFronts.Find(p_id);
+        }
 
-        
-        
+        public List<Inventory> InventoryByStoreId(int p_id)
+        {
+            return _context.Inventories
+            .Where(inv => inv.StoreId == p_id)
+            .ToList();
+        }
+
         public void Checkout(PurchaseOrder p_order)
         {
             
             var customer = _context.Customers.Find(p_order.CustomerId);
-          
             customer.Orders.Add(p_order);
             _context.SaveChanges();
           
         }
 
-        
+
+        public Product GetProductById(int p_id)
+        {
+            return _context.Products
+                            .AsNoTracking()
+                            .FirstOrDefault(pro => pro.ProductId == p_id);
+        }
+
         public Product AddProduct(Product p_product)
         {
             _context.Products.Add(p_product);
-
-            //Save changes to DB
             _context.SaveChanges();
-
             return p_product;
         }
 
@@ -46,12 +59,13 @@ namespace StoreDL
         public Customer AddCustomer(Customer p_customer)
         {
             _context.Customers.Add(p_customer);
-
-            //Save changes to DB
             _context.SaveChanges();
             return p_customer;
         }
 
+
+        
+        
         public Customer GetCustomerById(int p_id)
         {
             return _context.Customers
@@ -59,6 +73,10 @@ namespace StoreDL
                         .FirstOrDefault(cus => cus.CustomerId == p_id);
         }
 
+       // public List<Customer> GetCustomerByNames(string p_cust, string p_cust1)
+        //{
+          //  return
+        //}
         public List<Customer> GetCustomerByFirstName(string p_cust)
         {
             return _context.Customers
@@ -117,14 +135,6 @@ namespace StoreDL
             return p_inv;
         }
 
-
-        public Product GetProductById(int p_id)
-        {
-            return _context.Products
-            .AsNoTracking() //Stop tracking entity once found
-            .FirstOrDefault(prod => prod.ProductId == p_id);
-            
-        }
  
         public Inventory GetItemById(int p_id)
         {
@@ -192,6 +202,60 @@ namespace StoreDL
             return _context.Customers.ToList();
         }
 
+        public List<Inventory> AllItemStoreInfo(int p_id)
+        {
+            List<Inventory> info = new List<Inventory>();
+            using (DBp0Context _context = new DBp0Context())
+            {
+            var result = (
+                        from i in _context.Inventories 
+                        join p in _context.Products
+                        on i.ProductId equals p.ProductId 
+                        where i.StoreId == p_id
+                        select new {
+                            ProductId = i.ProductId,
+                            ItemName = p.ItemName,
+                            Price = p.Price,
+                            Quantity = i.Quantity
+
+                        });
+                        
+                        
+            }
+            return info;
+        }
     }
 }
 
+
+/*
+                        let t2 = t1.Inventories.Product
+                        on new { A = t1.ProductId, B = t1.Description } equals new { A = t2.}
+                                
+/*public
+List<Customer> listOfCustomer = _repo.GetAllCustomers();
+            return listOfCustomer.Where(cust => cust.FirstName.
+                                                    ToLower().
+                                                    Contains(p_cust.ToLower()) 
+                                            && cust.LastName.
+                                                    ToLower().
+                                                    Contains(p_cust.ToLower())).
+                                                    ToList();
+
+*/
+            // List<Model.Restaurant> listOfRest = new List<Model.Restaurant>();
+            // foreach (var rest in result)
+            // {
+            //     listOfRest.Add(new Model.Restaurant(){
+            //         Name = rest.RestName,
+            //         State = rest.RestState,
+            //         City = rest.RestCity,
+            //         Id = rest.RestId
+            //     });
+            // }
+
+            // return listOfRest;
+            /*
+            return _context.Inventories
+                    .Where(item => item.ProductId == p_id)
+        */

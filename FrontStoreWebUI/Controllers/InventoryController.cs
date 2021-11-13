@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FrontStoreWebUI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StoreBL;
+using StoreModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +12,25 @@ namespace FrontStoreWebUI.Controllers
 {
     public class InventoryController : Controller
     {
+        private IInventoryBL _invBL;
+
+        public InventoryController(IInventoryBL p_invBL) 
+        {
+            _invBL = p_invBL;
+        }
+
+        /*public ActionResult SeeInventory(int p_id)
+        {
+            StoreFronts this = _storeBL.Get
+            return View(_invBL.InventoryByStoreId()
+                        .Select(inv => )
+            )              
+        }
+        */
+
+        
+
+
         // GET: InventoryController
         public ActionResult Index()
         {
