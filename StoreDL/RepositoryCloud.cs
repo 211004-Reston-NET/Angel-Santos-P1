@@ -19,31 +19,19 @@ namespace StoreDL
         }
     
 
-        public void Sale()
+        
+        
+        public void Checkout(PurchaseOrder p_order)
         {
-            using (DBp0Context _context = new DBp0Context())
-           {    
-            var q = 
-            (@"
-                        SELECT *
-                        FROM Customer
-                        WHERE Customer_Id = 1"); 
-            //_context.DBp0Context _context = new DBp0Context();
-            //IEnumerable<PurchaseOrder> result = _context.ExecuteQuery<DBp0Context>
-            var result = _context.Customers.FromSqlRaw(q);
             
-            }
-        }
-
-        public PurchaseOrder Checkout(PurchaseOrder p_purc)
-        {
-            _context.PurchaseOrders.Add(p_purc);
-
-            //Save changes to DB
+            var customer = _context.Customers.Find(p_order.CustomerId);
+          
+            customer.Orders.Add(p_order);
             _context.SaveChanges();
-            return p_purc;
+          
         }
 
+        
         public Product AddProduct(Product p_product)
         {
             _context.Products.Add(p_product);
@@ -110,6 +98,15 @@ namespace StoreDL
             return p_lin;
         }
 
+        public Inventory ReplenishInventory(Inventory p_inv)
+        {
+           
+            _context.Inventories.Update(p_inv);
+
+            _context.SaveChanges();
+
+            return p_inv;
+        }
         public Inventory DecreaseInventory(Inventory p_inv)
         {
            
@@ -173,6 +170,11 @@ namespace StoreDL
             return _context.StoreFronts.ToList();
         }
 
+        public List<StoreModels.PurchaseOrder> ShowOrders()
+        {
+            return _context.PurchaseOrders.ToList();
+        }
+
         public StoreFront AddStore(StoreFront p_store)
         {
             _context.StoreFronts.Add(p_store);
@@ -181,6 +183,10 @@ namespace StoreDL
             return p_store;
         }
 
+        public List<Inventory> ShowInventory()
+        {
+            return _context.Inventories.ToList();
+        }
         public List<Customer> GetAllCustomers()
         {
             return _context.Customers.ToList();
