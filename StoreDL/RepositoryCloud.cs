@@ -77,6 +77,7 @@ namespace StoreDL
         //{
           //  return
         //}
+
         public List<Customer> GetCustomerByFirstName(string p_cust)
         {
             return _context.Customers
@@ -93,6 +94,18 @@ namespace StoreDL
                     .Where(cust => cust.LastName
                     .ToLower().Contains(p_cust.ToLower()))
                     .ToList();
+        }
+
+        public List<Customer> GetCustomerByNames(string p_cust)
+        {
+            //List<Customer> result = new List<Customer>();
+    
+            return _context.Customers
+                    .Where(customer => (customer.FirstName.Trim() + " " 
+                                        + customer.LastName.Trim() + " ")
+                                        .Trim().Contains(p_cust.ToLower())
+                                        ).ToList();
+                    
         }
 
         public Customer DeleteCustomer(Customer p_customer)
@@ -203,28 +216,30 @@ namespace StoreDL
         }
 
         //replace list inventory ListQuantity 
-       //public List<Stock> AllItemStoreInfo(int p_id)
-        //{
+       public List<TestClass> AllItemStoreInfo(int p_id)
+        {
             
-            /*
+            //List<TestClass> = New List
+
             var result = (
-                        from s in _context.Stocks 
+                        from i in _context.Inventories
                         join p in _context.Products
                         on i.ProductId equals p.ProductId 
                         where i.StoreId == p_id
-                        select new {
-                            ProductId = i.ProductId,
+                        select new TestClass {
+                            
+                            StoreId = i.StoreId,
                             ItemName = p.ItemName,
+                            ProductId = p.ProductId,
                             Price = p.Price,
                             Quantity = i.Quantity
 
-                        });
-                        
-                        
-            
+                        }).ToList();
+
             return result;
-            */
-        //}
+            
+        }
+      
     }
 }
 

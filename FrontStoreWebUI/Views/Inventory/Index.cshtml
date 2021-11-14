@@ -5,7 +5,7 @@
 }
 
 
-@model IEnumerable<FrontStoreWebUI.Models.InventoryVM>
+@model IEnumerable<StoreModels.TestClass>
 
 
 
@@ -24,6 +24,18 @@
     
     </tbody>
 </table>
+
+<table>
+    @foreach (var i in Model)
+    {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => i.ItemName)</td>
+        <td>@Html.DisplayFor(modelItem => i.Price)</td>
+        <td>@Html.DisplayFor(modelItem => i.Quantity)</td>
+    </tr>
+    }
+</table>
+
 <!--
    // IEnumerable<InventoryVM> inventories = ViewData["Inventory"] as IEnumerable<InventoryVM>;
    //IEnumerable<ProductVM> products = ViewData["Product"] as IEnumerable<ProductVM>;

@@ -38,7 +38,8 @@ namespace StoreDL
         /// </summary>
         /// <returns></returns>
         List<Inventory> ShowInventory();
-       
+        List<TestClass> AllItemStoreInfo(int p_id);
+
 
         /// <summary>
         /// Add new Customer to DB
@@ -54,20 +55,30 @@ namespace StoreDL
         /// <param name="p_order"> An Order added to the list of Orders by Customer ID</param>
         void Checkout(PurchaseOrder p_order);
 
-
         List<Inventory> InventoryByStoreId(int p_id);
-       // List<Inventory> AllItemStoreInfo(int p_id);
+
+        List<TestClass> AllItemStoreInfo(int p_id);
+        
         LineItem AddQuantityById(LineItem p_lin);
+
         Product AddProduct(Product p_product);
+
         List<PurchaseOrder> ShowOrders();
+
         Customer DeleteCustomer(Customer p_customer);
+
         Inventory GetItemById(int p_id);
+
         Inventory DecreaseInventory(Inventory p_inv);
+
         Product GetProductById(int p_id);
+
         Customer GetCustomerById(int p_id);
-        List<Customer> GetCustomerByFirstName(string p_cust);
+
         Inventory ReplenishInventory(Inventory p_inv);
+        List<Customer> GetCustomerByFirstName(string p_cust);
         List<Customer> GetCustomerByLastName(string p_cust);
+        List<Customer> GetCustomerByNames(string p_cust);
         //List<Customer> GetCustomerByNames(string p_cust, string p_cust1);
     }
 }

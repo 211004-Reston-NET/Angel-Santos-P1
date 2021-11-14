@@ -30,6 +30,11 @@ namespace StoreBL
             return _repo.GetAllCustomers();
         
         }
+
+        public List<Customer> GetCustomerByNames(string p_cust)
+        {
+            return _repo.GetCustomerByNames(p_cust);
+        }
         
 
         /*public IEnumerable<List<Customer>> GetCustomerByNames(GetCustomerByFirstName, GetCustomerByLastName)

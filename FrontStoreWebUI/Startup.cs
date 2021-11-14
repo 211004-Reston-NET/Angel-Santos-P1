@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StoreBL;
 using StoreDL;
+using StoreModels;
 
 namespace FrontStoreWebUI
 {
@@ -29,8 +30,8 @@ namespace FrontStoreWebUI
             services.AddScoped<IOrderBL, OrderBL>();
             services.AddScoped<ICustomerBL, CustomerBL>();
             services.AddScoped<IRepository, RepositoryCloud>();
-
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddSingleton<TestClass>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,7 +1,9 @@
 ﻿using FrontStoreWebUI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StoreBL;
+using StoreDL;
 using StoreModels;
 using System;
 using System.Collections.Generic;
@@ -33,14 +35,31 @@ namespace FrontStoreWebUI.Controllers
             )              
         }
         */
-
-        public ActionResult Index(int id)
+        /*
+        public ActionResult Index(int p_id)
         {
-            return View();
+            return View(_invBL.AllItemStoreInfo(p_id));
+        }
+        /*
+        public ActionResult TestIndex(int p_id)
+        {
+            return View(_invBL.AllItemStoreInfo(p_id));
+        }
+        */
+        
+        
+         public ActionResult Index(int p_id)
+        {
+            return View(_invBL.AllItemStoreInfo(p_id));
+
+
         }
 
+        /*
+        .Select(inv => new TestClass(inv))
+                .ToList());
 
-
+        */
 
         // GET: InventoryController
 

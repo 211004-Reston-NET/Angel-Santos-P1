@@ -21,7 +21,7 @@ namespace FrontStoreWebUI.Controllers
         public ActionResult Index()
         {
             return View(_custBL.GetAllCustomers()
-                .Select(cust => new CustomerVM(cust))
+                .Select(c => new CustomerVM(c))
                 .ToList()
                 );
         }
@@ -32,11 +32,7 @@ namespace FrontStoreWebUI.Controllers
             return View();
         }
         
-        [HttpGet]
-        public IActionResult Search()
-        {
-            return View();
-        }
+        
 
         [HttpPost]
         public IActionResult Create(CustomerVM custVM)
@@ -66,10 +62,11 @@ namespace FrontStoreWebUI.Controllers
         public IActionResult Search(string p_cust)
         {
 
-            return View(_custBL.GetCustomerByFirstName(p_cust)
-                        .Select(cust => new CustomerVM(cust))
-                        .ToList()
-            );
+            return View(_custBL.GetCustomerByNames(p_cust)
+                .Select(c => new CustomerVM(c))
+                .ToList()
+                );
+            
         }
         
 
@@ -95,6 +92,20 @@ namespace FrontStoreWebUI.Controllers
             return View();
         }
 
+        /*
+        public ActionResult Search(string p_cust)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        */
+
         // POST: CustomerController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -114,10 +125,11 @@ namespace FrontStoreWebUI.Controllers
         // GET: CustomerController/Delete/5
         //public ActionResult Delete(int id)
         //{
-       //     return View();
-       // }
+        //     return View();
+        // }
 
         // POST: CustomerController/Delete/5
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
@@ -132,6 +144,7 @@ namespace FrontStoreWebUI.Controllers
             }
         }
 
+        
         [HttpPost]
         public string Index(string searchString, bool notUsed)
         {

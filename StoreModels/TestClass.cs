@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
+
 
 namespace StoreModels
 {
-    public class Stock
+    public class TestClass
     {   
         //public Product Products { get; set; }
        // public PurchaseOrder Orders { get; set; }
@@ -10,10 +12,8 @@ namespace StoreModels
        // public Inventory Inventories { get; set; }
         public int ProductId { get; set; }
         public int StoreId { get; set; }
-       // public string ItemName { get; set; }
-
-        //public int Price { get; set; }
-
+        public string ItemName { get; set; }
+        public decimal Price { get; set; }
         public int Quantity { get; set; }
 
     }    
