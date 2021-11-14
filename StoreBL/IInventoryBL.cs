@@ -8,8 +8,11 @@ namespace StoreBL
         Inventory GetItemById(int p_id);
         Inventory DecreaseInventory(Inventory p_inv, int p_update);
         Inventory ReplenishInventory(Inventory p_inv, int p_rep);
+
         List<Inventory> AllItemStoreInfo(int p_id);
-        
+        public List<Inventory> ShowInventory();
+
+
     }
 }
 //Inventory Checkout(Inventory p_inv, int p_update);

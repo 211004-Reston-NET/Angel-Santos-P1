@@ -13,10 +13,16 @@ namespace FrontStoreWebUI.Controllers
     public class InventoryController : Controller
     {
         private IInventoryBL _invBL;
+        private IProductBL _prodBL;
+        private IStoreBL _storeBL;
 
-        public InventoryController(IInventoryBL p_invBL) 
+
+        public InventoryController(IInventoryBL p_invBL, IProductBL p_prodBL, IStoreBL p_storeBL) 
         {
             _invBL = p_invBL;
+            _prodBL = p_prodBL;
+            _storeBL = p_storeBL;
+
         }
 
         /*public ActionResult SeeInventory(int p_id)
@@ -32,10 +38,23 @@ namespace FrontStoreWebUI.Controllers
 
 
         // GET: InventoryController
-        public ActionResult Index()
+        public ActionResult Index(int p_id)
         {
-            return View();
+            // InvProdStoreVM crashoverride = new InvProdStoreVM(); 
+            /*iewBag.Inventories = ShowInventory();
+             */
+            //List<Product> listOfProduct = _repo.Product.ToList;
+            // var tupleModel = new Tuple<List<Inventory>, List<Product>, List<StoreFront>>(ShowInventory(), GetAllStore(), GetAllProduct());
+            //InvProdStoreVM mymodel = new InvProdStoreVM();
+            ViewData["Products"] = _prodBL.GetAllProducts();
+            ViewData["StoreFronts"] = _storeBL.GetAllStore();
+            ViewData["Inventory"] = _invBL.ShowInventory();
+            return View(_invBL.AllItemStoreInfo(p_id)
+                .Select(inv => new InventoryVM(inv))
+                .ToList());
+           
         }
+
 
         // GET: InventoryController/Details/5
         public ActionResult Details(int id)

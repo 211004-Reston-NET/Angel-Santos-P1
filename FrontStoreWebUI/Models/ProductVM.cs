@@ -9,10 +9,13 @@ namespace FrontStoreWebUI.Models
 {
     public class ProductVM
     {
+        //private List<Products> products; 
+
         public ProductVM()
         {
 
         }
+
         public ProductVM(Product p_prod)
         {
             this.ProductId = p_prod.ProductId;
@@ -21,6 +24,14 @@ namespace FrontStoreWebUI.Models
             this.Price = p_prod.Price;
             this.Description = p_prod.Description;
         }
+
+        /*
+        public ProductVM(List<Products> product)
+        {
+            this.products = products;
+        }
+        */
+
         public int ProductId { get; set; }
         public string ItemName { get; set; }
         public string Category { get; set; }
