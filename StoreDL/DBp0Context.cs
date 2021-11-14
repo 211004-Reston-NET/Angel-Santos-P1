@@ -25,6 +25,7 @@ namespace StoreDL
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         public virtual DbSet<StoreFront> StoreFronts { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -81,6 +82,20 @@ namespace StoreDL
                 entity.ToTable("Line_Item");
                 entity.Property(e => e.LineId).HasColumnName("Line_Id");
                 entity.Property(e => e.ProductId).HasColumnName("Prod_Id");
+                entity.Property(e => e.Quantity).HasColumnName("Quantity");
+                
+            });
+
+            modelBuilder.Entity<Stock>(entity =>
+            {
+                entity.HasKey(e => e.ProductId)
+                    .HasName("PK__StockProdId__");
+
+                entity.ToTable("Stock");
+            
+                entity.Property(e => e.ProductId).HasColumnName("Product_Id");
+                entity.Property(e => e.ProductId).HasColumnName("ItemName");
+                entity.Property(e => e.ProductId).HasColumnName("Price");
                 entity.Property(e => e.Quantity).HasColumnName("Quantity");
                 
             });

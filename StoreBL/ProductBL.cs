@@ -30,7 +30,7 @@ namespace StoreBL
         public List<Product> GetAllProducts()
         {
             
-            List<Product> listOfProduct = _repo.GetAllProduct();
+            List<Product> listOfProduct = _repo.GetAllProducts();
             for (int i = 0; i < listOfProduct.Count; i++)
             //Below sets product names to Uppercase
             {
@@ -64,7 +64,7 @@ namespace StoreBL
 
         public List<Product> GetProductName(string p_name)
         {
-            List<Product> listOfProduct = _repo.GetAllProduct();
+            List<Product> listOfProduct = _repo.GetAllProducts();
             return listOfProduct.Where(prod => prod.ItemName.ToLower().Contains(p_name.ToLower())).ToList();
         }
 

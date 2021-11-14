@@ -24,7 +24,7 @@ namespace StoreDL
         /// Return list of products in DB
         /// </summary>
         /// <returns></returns>
-        List<Product> GetAllProduct();
+        List<Product> GetAllProducts();
 
         /// <summary>
         /// Return list of Stores in DB
@@ -56,7 +56,7 @@ namespace StoreDL
 
 
         List<Inventory> InventoryByStoreId(int p_id);
-        List<Inventory> AllItemStoreInfo(int p_id);
+       // List<Inventory> AllItemStoreInfo(int p_id);
         LineItem AddQuantityById(LineItem p_lin);
         Product AddProduct(Product p_product);
         List<PurchaseOrder> ShowOrders();

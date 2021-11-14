@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoreDL;
 
 namespace StoreDL.Migrations
 {
     [DbContext(typeof(DBp0Context))]
-    partial class DBp0ContextModelSnapshot : ModelSnapshot
+    [Migration("20211114040059_AddedStockTable")]
+    partial class AddedStockTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -204,54 +206,6 @@ namespace StoreDL.Migrations
                     b.ToTable("Purchase_Order");
                 });
 
-            modelBuilder.Entity("StoreModels.Stock", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("Price")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("InventoriesInvId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ItemName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("LocationsStoreId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("OrdersOrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int")
-                        .HasColumnName("Price1");
-
-                    b.Property<int>("ProductsProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int")
-                        .HasColumnName("Quantity");
-
-                    b.Property<int>("StoreId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductId")
-                        .HasName("PK__StockProdId__");
-
-                    b.HasIndex("InventoriesInvId");
-
-                    b.HasIndex("LocationsStoreId");
-
-                    b.HasIndex("OrdersOrderId");
-
-                    b.HasIndex("ProductsProductId");
-
-                    b.ToTable("Stock");
-                });
-
             modelBuilder.Entity("StoreModels.StoreFront", b =>
                 {
                     b.Property<int>("StoreId")
@@ -355,35 +309,6 @@ namespace StoreDL.Migrations
                         .HasForeignKey("StoreFrontId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("StoreModels.Stock", b =>
-                {
-                    b.HasOne("StoreModels.Inventory", "Inventories")
-                        .WithMany()
-                        .HasForeignKey("InventoriesInvId");
-
-                    b.HasOne("StoreModels.StoreFront", "Locations")
-                        .WithMany()
-                        .HasForeignKey("LocationsStoreId");
-
-                    b.HasOne("StoreModels.PurchaseOrder", "Orders")
-                        .WithMany()
-                        .HasForeignKey("OrdersOrderId");
-
-                    b.HasOne("StoreModels.Product", "Products")
-                        .WithMany()
-                        .HasForeignKey("ProductsProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Inventories");
-
-                    b.Navigation("Locations");
-
-                    b.Navigation("Orders");
-
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("StoreModels.Customer", b =>

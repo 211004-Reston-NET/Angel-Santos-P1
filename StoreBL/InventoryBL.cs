@@ -43,10 +43,11 @@ namespace StoreBL
         
         }
 
-        public List<Inventory> AllItemStoreInfo(int p_id)
+        /*public List<Stock> AllItemStoreInfo(int p_id)
         {
             return _repo.AllItemStoreInfo(p_id);
         }
+        */
         
         
     }

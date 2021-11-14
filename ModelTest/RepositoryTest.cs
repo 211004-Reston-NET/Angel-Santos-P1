@@ -81,7 +81,7 @@ namespace ModelTest
                 IRepository repo = new RepositoryCloud(context);
 
                 //Act
-                var test = repo.GetAllProduct();
+                var test = repo.GetAllProducts();
 
                 //Assert
                 Assert.Equal(3, test.Count);

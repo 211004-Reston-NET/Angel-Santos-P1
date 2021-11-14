@@ -6,11 +6,13 @@ namespace StoreBL
     public interface IInventoryBL
     {
         Inventory GetItemById(int p_id);
+        
         Inventory DecreaseInventory(Inventory p_inv, int p_update);
+        
         Inventory ReplenishInventory(Inventory p_inv, int p_rep);
 
-        List<Inventory> AllItemStoreInfo(int p_id);
-        public List<Inventory> ShowInventory();
+        //List<Stock> AllItemStoreInfo(int p_id);
+        List<Inventory> ShowInventory();
 
 
     }

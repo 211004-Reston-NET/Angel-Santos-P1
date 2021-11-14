@@ -145,12 +145,12 @@ namespace StoreDL
         }
 
 
-        public List<StoreModels.Customer> GetAllCustomer(Customer p_cust)
+        public List<Customer> GetAllCustomer(Customer p_cust)
         {
             return _context.Customers.ToList();
         }
 
-        public List<StoreModels.Product> GetAllProduct()
+        public List<Product> GetAllProducts()
         {
             
             //1. Method Syntax - LINQ
@@ -202,13 +202,13 @@ namespace StoreDL
             return _context.Customers.ToList();
         }
 
-        public List<Inventory> AllItemStoreInfo(int p_id)
-        {
-            List<Inventory> info = new List<Inventory>();
-            using (DBp0Context _context = new DBp0Context())
-            {
+        //replace list inventory ListQuantity 
+       //public List<Stock> AllItemStoreInfo(int p_id)
+        //{
+            
+            /*
             var result = (
-                        from i in _context.Inventories 
+                        from s in _context.Stocks 
                         join p in _context.Products
                         on i.ProductId equals p.ProductId 
                         where i.StoreId == p_id
@@ -221,9 +221,10 @@ namespace StoreDL
                         });
                         
                         
-            }
-            return info;
-        }
+            
+            return result;
+            */
+        //}
     }
 }
 
