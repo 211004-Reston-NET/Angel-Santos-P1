@@ -15,6 +15,7 @@ namespace StoreModels
         public string Description { get;set; }
 
         public StoreFront StoreFront { get;set; }
+        public Inventory Inventory { get;set; }
         
         
     }

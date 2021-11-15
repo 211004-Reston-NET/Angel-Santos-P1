@@ -1,4 +1,5 @@
-﻿/*using StoreModels;
+
+/*using StoreModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,12 @@ namespace FrontStoreWebUI.Models
     {
         public StoreInvCheckVM()
         {
+
+        }
+
+        public StoreInvCheckVM(StoreInvCheckVM p_inv)
+        {
+            this.StoreId = p_inv.Store.
 
         }
 

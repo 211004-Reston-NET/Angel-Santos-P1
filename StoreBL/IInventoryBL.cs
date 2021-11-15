@@ -11,7 +11,7 @@ namespace StoreBL
         
         Inventory ReplenishInventory(Inventory p_inv, int p_rep);
 
-        List<TestClass> AllItemStoreInfo(int p_id);
+        IEnumerable<Inventory> AllItemStoreInfo(int p_id);
 
         List<Inventory> ShowInventory();
 

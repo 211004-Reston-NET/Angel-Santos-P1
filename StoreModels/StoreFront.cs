@@ -10,7 +10,7 @@ namespace StoreModels
         private string _address;
         private string _city;
         private string _state;
-        public List<PurchaseOrder> Orders { get; set; }
+        //public List<PurchaseOrder> Orders { get; set; }
         public int StoreId { get; set; }
         public string StoreName 
         {

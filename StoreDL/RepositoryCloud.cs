@@ -27,7 +27,7 @@ namespace StoreDL
         public List<Inventory> InventoryByStoreId(int p_id)
         {
             return _context.Inventories
-            .Where(inv => inv.StoreId == p_id)
+            .Where(inv => inv.StoreFront.StoreId == p_id)
             .ToList();
         }
 
@@ -216,27 +216,30 @@ namespace StoreDL
         }
 
         //replace list inventory ListQuantity 
-       public List<TestClass> AllItemStoreInfo(int p_id)
+       public IEnumerable<Inventory> AllItemStoreInfo(int p_id)
         {
-            
-            //List<TestClass> = New List
 
+
+            //IEnumerable<Inventory> inventories = new();
             var result = (
                         from i in _context.Inventories
                         join p in _context.Products
-                        on i.ProductId equals p.ProductId 
-                        where i.StoreId == p_id
-                        select new TestClass {
-                            
-                            StoreId = i.StoreId,
+                        on i.Product.ProductId equals p.ProductId
+                        join s in _context.StoreFronts
+                        on i.StoreFront.StoreId equals s.StoreId
+                        where StoreFronts.StoreId == p_id
+                        select new Inventory()
+                        {
+
+                            StoreId = s.StoreId,
                             ItemName = p.ItemName,
                             ProductId = p.ProductId,
                             Price = p.Price,
                             Quantity = i.Quantity
 
-                        }).ToList();
+                        });
 
-            return result;
+            return result.ToList(); 
             
         }
       

@@ -5,7 +5,7 @@
 }
 
 
-@model IEnumerable<StoreModels.TestClass>
+@model IEnumerable<FrontStoreWebUI.Models.InventoryVM>
 
 
 
@@ -22,18 +22,16 @@
     </thead>
     <tbody>
     
-    </tbody>
-</table>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => i.Quantity)</td>
+                <td>@Html.DisplayFor(modelItem => i.Quantity)</td>
+                <td>@Html.DisplayFor(modelItem => i.Quantity)</td>
+            </tr>
+        }
 
-<table>
-    @foreach (var i in Model)
-    {
-    <tr>
-        <td>@Html.DisplayFor(modelItem => i.ItemName)</td>
-        <td>@Html.DisplayFor(modelItem => i.Price)</td>
-        <td>@Html.DisplayFor(modelItem => i.Quantity)</td>
-    </tr>
-    }
+        </tbody>
 </table>
 
 <!--

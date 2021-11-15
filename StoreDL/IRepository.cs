@@ -38,7 +38,6 @@ namespace StoreDL
         /// </summary>
         /// <returns></returns>
         List<Inventory> ShowInventory();
-        List<TestClass> AllItemStoreInfo(int p_id);
 
 
         /// <summary>
@@ -57,7 +56,7 @@ namespace StoreDL
 
         List<Inventory> InventoryByStoreId(int p_id);
 
-        List<TestClass> AllItemStoreInfo(int p_id);
+        IEnumerable<Inventory> AllItemStoreInfo(int p_id);
         
         LineItem AddQuantityById(LineItem p_lin);
 

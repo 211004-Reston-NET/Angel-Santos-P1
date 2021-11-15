@@ -22,7 +22,6 @@ namespace StoreDL
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Inventory> Inventories { get; set; }
         public virtual DbSet<LineItem> LineItems { get; set; }
-        public virtual DbSet<Stock> Stocks { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         public virtual DbSet<StoreFront> StoreFronts { get; set; }
@@ -70,8 +69,6 @@ namespace StoreDL
                 entity.ToTable("Inventory");
 
                 entity.Property(e => e.InvId).HasColumnName("Inv_Id");
-                entity.Property(e => e.StoreId).HasColumnName("Store_Id");
-                entity.Property(e => e.ProductId).HasColumnName("Prod_Id");
                 entity.Property(e => e.Quantity).HasColumnName("Quantity");
             });
 
@@ -87,17 +84,19 @@ namespace StoreDL
                 
             });
 
-            modelBuilder.Entity<Stock>(entity =>
+            modelBuilder.Entity<StoreInvCheck>(entity =>
             {
                 entity.HasKey(e => e.ProductId)
                     .HasName("PK__StockProdId__");
 
-                entity.ToTable("Stock");
+                entity.ToTable("StoreInvCheck");
                 
                 entity.Property(e => e.ProductId).HasColumnName("Product_Id");
                 entity.Property(e => e.StoreId).HasColumnName("Store_Id");
-                //entity.Property(e => e.ProductId).HasColumnName("ItemName");
-                //entity.Property(e => e.ProductId).HasColumnName("Price");
+                entity.Property(e => e.ItemName).HasColumnName("ItemName");
+                entity.Property(e => e.Price)
+                    .HasColumnType("decimal(18, 0)")
+                    .HasColumnName("Price");
                 entity.Property(e => e.Quantity).HasColumnName("Quantity");
                 
             });

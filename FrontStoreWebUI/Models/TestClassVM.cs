@@ -1,4 +1,4 @@
-using StoreModels;
+/*using StoreModels;
 using System.Collections.Generic;
 
 namespace FrontStoreWebUI.Models
@@ -28,3 +28,4 @@ namespace FrontStoreWebUI.Models
 
     }
 }
+*/
