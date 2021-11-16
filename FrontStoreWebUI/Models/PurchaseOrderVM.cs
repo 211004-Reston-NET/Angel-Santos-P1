@@ -23,6 +23,8 @@ namespace FrontStoreWebUI.Models
         public int StoreId { get; set; }
         public int CustomerId { get; set; }
         public decimal TotalPrice { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
     }
 }

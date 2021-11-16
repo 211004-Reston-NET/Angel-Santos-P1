@@ -16,7 +16,7 @@ namespace ModelTest
             int id = 1234;
             
                 //Act
-            _custTest.CustomerId = id;
+            _custTest.CustomerId = id; 
 
                 //Assert
             Assert.Equal(_custTest.CustomerId, id);

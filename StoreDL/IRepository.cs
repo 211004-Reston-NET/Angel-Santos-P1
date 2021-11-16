@@ -11,6 +11,7 @@ namespace StoreDL
         /// <param name="p_store">New store class returned to DB</param>
         /// <returns></returns>
         StoreFront AddStore(StoreFront p_store);
+
         StoreFront StoreById(int p_id);
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace StoreDL
         /// </summary>
         /// <returns></returns>
         List<Inventory> ShowInventory();
-        List<TestClass> AllItemStoreInfo(int p_id);
+        
 
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace StoreDL
 
         List<Inventory> InventoryByStoreId(int p_id);
 
-        List<TestClass> AllItemStoreInfo(int p_id);
+        List<StoreInvCheck> AllItemStoreInfo(int p_id);
         
         LineItem AddQuantityById(LineItem p_lin);
 
@@ -69,16 +70,21 @@ namespace StoreDL
 
         Inventory GetItemById(int p_id);
 
-        Inventory DecreaseInventory(Inventory p_inv);
-
         Product GetProductById(int p_id);
 
         Customer GetCustomerById(int p_id);
 
-        Inventory ReplenishInventory(Inventory p_inv);
         List<Customer> GetCustomerByFirstName(string p_cust);
+
         List<Customer> GetCustomerByLastName(string p_cust);
+
         List<Customer> GetCustomerByNames(string p_cust);
-        //List<Customer> GetCustomerByNames(string p_cust, string p_cust1);
+
+        Inventory Replenish(Inventory update);
+
+        //void ReplenishInventory(int p_id, int p_stockup);
+
+        //void ManualReplenish(StoreInvCheck p_inv);
+       
     }
 }

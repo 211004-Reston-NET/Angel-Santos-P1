@@ -1,6 +1,7 @@
 using StoreModels;
 using System.Collections.Generic;
 
+
 namespace FrontStoreWebUI.Models
 {
     public class TestClassVM
@@ -10,7 +11,7 @@ namespace FrontStoreWebUI.Models
 
         }
 
-        public TestClassVM(TestClass p_inv)
+       /* public TestClassVM(TestClass p_inv)
         {
            // this.InvId = p_inv.InvId;
             this.StoreId = p_inv.StoreId;
@@ -25,6 +26,6 @@ namespace FrontStoreWebUI.Models
         public int StoreId { get; set; }
         public int ProdId { get; set; }
         public int Quantity { get; set; }
-
+       */
     }
 }

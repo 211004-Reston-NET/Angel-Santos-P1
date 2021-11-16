@@ -108,24 +108,7 @@ namespace ModelTest
             }
         }
 
-        /*[Fact]
-        public void ReplenishInventoryTest()
-        {
-            using (var context = new DBp0Context(_options))
-            {
-                //Arrange
-                IRepository repo = new RepositoryCloud(context);
-
-                //Act
-                var test = repo.ReplenishInventory();
-
-                //Assert
-                Assert.Equal(3, test.Count);
-                Assert.Equal(100, test[0].Quantity);
-
-            }
-        }
-        */
+        
 
         [Fact]
         public void AddStoreTest()
@@ -152,7 +135,7 @@ namespace ModelTest
             //using block will verify the store is added
             using (DBp0Context contexts = new DBp0Context(_options))
             {
-                StoreFront result = contexts.StoreFronts.Find(1);
+                StoreFront result = contexts.StoreFronts.Find(5);
 
                 Assert.NotNull(result);
                 Assert.Equal("Angel's New Store", result.StoreName);
@@ -162,35 +145,12 @@ namespace ModelTest
             }
         }
 
+       
         
 
-        //[Theory]
-        //[InlineData("l")]
-       /* public void GetCustomersByFName(string p_cust)
-        {
-            using (var context = new DBp0Context(_options))
-            {
-                //Arrange
-                IRepository repo = new RepositoryCloud(context);
-                
-                //= context."l";
+        
 
-                //Act
-                //List<Customer> listOfCustomer = repo.GetCustomerByFirstName("l");
-                var test = repo.GetCustomerByFirstName(p_cust);
-
-                //Assert.NotNull(() => _custTest.FirstName = p_cust);
-                //Assert.Contains(p_cust);
-                //Assert
-                //Assert.Contains("l", test.Customer.FirstName);
-               // Assert.Equal(1, listOfCustomer.Count);
-                //Assert.Equal(2, test[0].CustomerId);
-              //  Assert.Equal("l", test.FindAll);
-               // Assert.Equal(101, test[0].FirstName);
-
-            }
-        }
-        */
+        
             
         private void Seed()
         {
@@ -410,8 +370,51 @@ namespace ModelTest
         
 
                 
-                            
+                            /*[Fact]
+        public void ReplenishInventoryTest()
+        {
+            using (var context = new DBp0Context(_options))
+            {
+                //Arrange
+                IRepository repo = new RepositoryCloud(context);
+
+                //Act
+                var test = repo.ReplenishInventory();
+
+                //Assert
+                Assert.Equal(3, test.Count);
+                Assert.Equal(100, test[0].Quantity);
+
+            }
+        }
+        */
                 
             
-        
+        //[Theory]
+        //[InlineData("l")]
+       /* public void GetCustomersByFName(string p_cust)
+        {
+            using (var context = new DBp0Context(_options))
+            {
+                //Arrange
+                IRepository repo = new RepositoryCloud(context);
+                
+                //= context."l";
+
+                //Act
+                //List<Customer> listOfCustomer = repo.GetCustomerByFirstName("l");
+                var test = repo.GetCustomerByFirstName(p_cust);
+
+                //Assert.NotNull(() => _custTest.FirstName = p_cust);
+                //Assert.Contains(p_cust);
+                //Assert
+                //Assert.Contains("l", test.Customer.FirstName);
+               // Assert.Equal(1, listOfCustomer.Count);
+                //Assert.Equal(2, test[0].CustomerId);
+              //  Assert.Equal("l", test.FindAll);
+               // Assert.Equal(101, test[0].FirstName);
+
+            }
+        }
+        */
     

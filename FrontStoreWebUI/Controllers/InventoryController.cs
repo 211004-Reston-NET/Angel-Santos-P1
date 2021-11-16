@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StoreBL;
-using StoreDL;
 using StoreModels;
 using System;
 using System.Collections.Generic;
@@ -14,9 +13,9 @@ namespace FrontStoreWebUI.Controllers
 {
     public class InventoryController : Controller
     {
-        private IInventoryBL _invBL;
-        private IProductBL _prodBL;
-        private IStoreBL _storeBL;
+        private  IInventoryBL _invBL;
+        private  IProductBL _prodBL;
+        private  IStoreBL _storeBL;
 
 
         public InventoryController(IInventoryBL p_invBL, IProductBL p_prodBL, IStoreBL p_storeBL) 
@@ -27,26 +26,7 @@ namespace FrontStoreWebUI.Controllers
 
         }
 
-        /*public ActionResult SeeInventory(int p_id)
-        {
-            StoreFronts this = _storeBL.Get
-            return View(_invBL.InventoryByStoreId()
-                        .Select(inv => )
-            )              
-        }
-        */
-        /*
-        public ActionResult Index(int p_id)
-        {
-            return View(_invBL.AllItemStoreInfo(p_id));
-        }
-        /*
-        public ActionResult TestIndex(int p_id)
-        {
-            return View(_invBL.AllItemStoreInfo(p_id));
-        }
-        */
-        
+       
         
          public ActionResult Index(int p_id)
         {
@@ -54,87 +34,72 @@ namespace FrontStoreWebUI.Controllers
 
 
         }
-
         /*
-        .Select(inv => new TestClass(inv))
-                .ToList());
+        [HttpGet]
+        public IActionResult SelectProduct()
+        {
+            return View();
+        }
 
+
+        [HttpPost]
+        public IActionResult SelectProduct(int p_id)
+        {
+            return View(_invBL.GetItemById(p_id));
+           
+        }
         */
-
-        // GET: InventoryController
-
-
-
-
-
-
-        // GET: InventoryController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        public ActionResult SelectProduct(int p_id)
         {
-            return View();
+            Inventory _id = _invBL.GetItemById(p_id);
+            return View(new StoreInvCheckVM(_id));
         }
 
-        // GET: InventoryController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: InventoryController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult SelectProduct(StoreInvCheckVM item)
         {
+            if (ModelState.IsValid)
+            {
+                Inventory invRep = _invBL.GetItemById(item.ProductId);
+
+                invRep.Quantity = item.Quantity;
+
+                _invBL.Replenish(invRep);
+
+                return RedirectToAction(nameof(Index));
+
+            }
+
+            return View();
+        }
+
+        
+            /*
+            [HttpPost]
+            public IActionResult Replenish(int p_id, int p_stockup)
+            {
+                if (ModelState.IsValid)
+                { 
+                    /
+
+                 _invBL.ReplenishInventory(p_id, p_stockup);
+
+                return View();
+
+            }
+            /*
             try
             {
+                 Inventory update = _invBL.GetItemById(p_id);
+                _invBL.ManualReplenish(update);
                 return RedirectToAction(nameof(Index));
+                //return View(_invBL.ManualReplenish(p_id));
             }
             catch
             {
                 return View();
             }
+            */
         }
-
-        // GET: InventoryController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: InventoryController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: InventoryController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: InventoryController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-    }
 }

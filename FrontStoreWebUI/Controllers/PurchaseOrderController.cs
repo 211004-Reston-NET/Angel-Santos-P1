@@ -21,16 +21,16 @@ namespace FrontStoreWebUI.Controllers
             return View();
         }
 
-        // GET: PurchaseOrderController/Create
-        public ActionResult Create()
+        // GET: PurchaseOrderController/Purchase
+        public ActionResult Purchase()
         {
             return View();
         }
 
-        // POST: PurchaseOrderController/Create
+        // POST: PurchaseOrderController/Purchase
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Purchase(IFormCollection collection)
         {
             try
             {

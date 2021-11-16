@@ -31,14 +31,7 @@ namespace StoreDL
             .ToList();
         }
 
-        public void Checkout(PurchaseOrder p_order)
-        {
-            
-            var customer = _context.Customers.Find(p_order.CustomerId);
-            customer.Orders.Add(p_order);
-            _context.SaveChanges();
-          
-        }
+        
 
 
         public Product GetProductById(int p_id)
@@ -129,24 +122,7 @@ namespace StoreDL
             return p_lin;
         }
 
-        public Inventory ReplenishInventory(Inventory p_inv)
-        {
-           
-            _context.Inventories.Update(p_inv);
-
-            _context.SaveChanges();
-
-            return p_inv;
-        }
-        public Inventory DecreaseInventory(Inventory p_inv)
-        {
-           
-            _context.Inventories.Update(p_inv);
-
-            _context.SaveChanges();
-
-            return p_inv;
-        }
+                
 
  
         public Inventory GetItemById(int p_id)
@@ -215,18 +191,79 @@ namespace StoreDL
             return _context.Customers.ToList();
         }
 
-        //replace list inventory ListQuantity 
-       public List<TestClass> AllItemStoreInfo(int p_id)
+
+       /*//replace list inventory ListQuantity 
+        public void ReplenishInventory(int p_id, int p_stockup)
+        {          
+            var get = _context.Inventories
+                            .FirstOrDefault<Inventory>(item => item.ProductId == p_id);
+                            
+            
+            get.Quantity =+ p_stockup;
+           
+            _context.Inventories.Update(get);
+
+            _context.SaveChanges(); 
+
+        }
+       */
+
+        public Inventory Replenish(Inventory update)
+        {
+
+            _context.Inventories.Update(update);
+
+            _context.SaveChanges();
+            return update;
+        }
+
+        /*
+        public void ManualReplenish(StoreInvCheck p_inv)
+        {
+
+           
+           // var get = _context.Inventories
+            //                .FirstOrDefault(item => item.ProductId == p_id);
+           
+
+            _context.StoreInvChecks.Update(p_inv);
+
+            _context.SaveChanges();
+
+            
+
+        }
+        */
+
+
+        /*
+        public void ReplenishInventory(int p_id)
+        {
+
+            var get = _context.Inventories
+                            FirstOrDefault<Inventory>(item => item.ProductId == p_id);
+            //var update =
+            get.Quantity =+ 1;
+
+            _context.Inventories.Update(get);
+
+            _context.SaveChanges();
+
+        }
+
+        */
+
+        public List<StoreInvCheck> AllItemStoreInfo(int p_id)
         {
             
             //List<TestClass> = New List
-
+            
             var result = (
                         from i in _context.Inventories
                         join p in _context.Products
                         on i.ProductId equals p.ProductId 
                         where i.StoreId == p_id
-                        select new TestClass {
+                        select new StoreInvCheck  {
                             
                             StoreId = i.StoreId,
                             ItemName = p.ItemName,
@@ -238,6 +275,15 @@ namespace StoreDL
 
             return result;
             
+        }
+
+        public void Checkout(PurchaseOrder p_order)
+        {
+            
+            var customer = _context.Customers.Find(p_order.CustomerId);
+            customer.Orders.Add(p_order);
+            _context.SaveChanges();
+          
         }
       
     }

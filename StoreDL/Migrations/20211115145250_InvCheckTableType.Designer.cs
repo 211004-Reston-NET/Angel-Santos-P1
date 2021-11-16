@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoreDL;
 
 namespace StoreDL.Migrations
 {
     [DbContext(typeof(DBp0Context))]
-    partial class DBp0ContextModelSnapshot : ModelSnapshot
+    [Migration("20211115145250_InvCheckTableType")]
+    partial class InvCheckTableType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,14 +188,6 @@ namespace StoreDL.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Customer_Id");
 
-                    b.Property<string>("ItemName")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ItemName");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int")
-                        .HasColumnName("ProductId");
-
                     b.Property<int>("StoreFrontId")
                         .HasColumnType("int")
                         .HasColumnName("Store_Id");
@@ -210,6 +204,28 @@ namespace StoreDL.Migrations
                     b.HasIndex("StoreFrontId");
 
                     b.ToTable("Purchase_Order");
+                });
+
+            modelBuilder.Entity("StoreModels.Stock", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Product_Id")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int")
+                        .HasColumnName("Quantity");
+
+                    b.Property<int>("StoreId")
+                        .HasColumnType("int")
+                        .HasColumnName("Store_Id");
+
+                    b.HasKey("ProductId")
+                        .HasName("PK__StockProdId__");
+
+                    b.ToTable("Stock");
                 });
 
             modelBuilder.Entity("StoreModels.StoreFront", b =>
@@ -248,50 +264,6 @@ namespace StoreDL.Migrations
                         .HasName("PK__StoreFro__A2F2A30CAD3172F2");
 
                     b.ToTable("Store_Front");
-                });
-
-            modelBuilder.Entity("StoreModels.StoreInvCheck", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("InventoryInvId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ItemName")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ItemName");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,0)")
-                        .HasColumnName("Price");
-
-                    b.Property<int>("ProductId1")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int")
-                        .HasColumnName("Quantity");
-
-                    b.Property<int?>("StoreFrontStoreId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StoreId")
-                        .HasColumnType("int")
-                        .HasColumnName("StoreId");
-
-                    b.HasKey("ProductId")
-                        .HasName("PK__StoreInvCheck__A2F2A30CAD3172F2");
-
-                    b.HasIndex("InventoryInvId");
-
-                    b.HasIndex("ProductId1");
-
-                    b.HasIndex("StoreFrontStoreId");
-
-                    b.ToTable("StoreInvCheck");
                 });
 
             modelBuilder.Entity("LineItemPurchaseOrder", b =>
@@ -359,29 +331,6 @@ namespace StoreDL.Migrations
                         .HasForeignKey("StoreFrontId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("StoreModels.StoreInvCheck", b =>
-                {
-                    b.HasOne("StoreModels.Inventory", "Inventory")
-                        .WithMany()
-                        .HasForeignKey("InventoryInvId");
-
-                    b.HasOne("StoreModels.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("StoreModels.StoreFront", "StoreFront")
-                        .WithMany()
-                        .HasForeignKey("StoreFrontStoreId");
-
-                    b.Navigation("Inventory");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("StoreFront");
                 });
 
             modelBuilder.Entity("StoreModels.Customer", b =>
