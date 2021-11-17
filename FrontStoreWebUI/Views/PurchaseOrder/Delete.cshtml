@@ -35,10 +35,7 @@
 
         <!--We need a form to do a post request-->
         <form asp-action="Delete">
-            <!--
-            This input element is hidden because we don't want the user to input some id instead we are just supplying the id w
-            Already have
-        -->
+            
             <input type="hidden" asp-for="OrderId" />
             <input type="submit" value="Delete" class="btn btn-danger" />
         </form>

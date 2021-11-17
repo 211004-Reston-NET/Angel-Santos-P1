@@ -116,11 +116,11 @@ namespace FrontStoreWebUI.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int p_id, IFormCollection collection)
+        public ActionResult Delete(int OrderId, IFormCollection collection)
         {
             try
             {
-                PurchaseOrder _erase = _orderBL.GetOrderById(p_id);
+                PurchaseOrder _erase = _orderBL.GetOrderById(OrderId);
                 _orderBL.DeleteOrder(_erase);
                 return RedirectToAction(nameof(Index));
             }
