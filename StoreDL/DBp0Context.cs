@@ -153,6 +153,8 @@ namespace StoreDL
 
                 entity.Property(e => e.ItemName).HasColumnName("ItemName");
 
+                entity.Property(e => e.PurchaseDate).HasColumnName("PurchaseDate");
+
                 
                 entity.Property(e => e.TotalPrice)
                     .HasColumnType("decimal(18, 0)")

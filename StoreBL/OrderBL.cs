@@ -20,14 +20,16 @@ namespace StoreBL
             _repo.Checkout(p_order);
         }
         
-        //public PurchaseOrder Checkout(PurchaseOrder p_purc)
-        //{
-       //     return _repo.Checkout(p_purc);
-       // }
+        public PurchaseOrder PlaceOrder(PurchaseOrder p_order)
+            {
+            return _repo.PlaceOrder(p_order);
+            }
 
         public List<PurchaseOrder> ShowOrders()
         {
             return _repo.ShowOrders();
         }
+
+        
     }
 }

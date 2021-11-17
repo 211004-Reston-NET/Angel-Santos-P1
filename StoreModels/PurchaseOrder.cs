@@ -14,6 +14,7 @@ namespace StoreModels
         public int OrderId { get; set;}
         public int ProductId { get; set; }
         public int StoreFrontId {get; set;}
+        public DateTime PurchaseDate { get; set;}
         public int CustomerId {get; set; }
         public string ItemName { get;set; } 
         public decimal TotalPrice { get; set; }

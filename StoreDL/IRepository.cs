@@ -66,6 +66,8 @@ namespace StoreDL
 
         List<PurchaseOrder> ShowOrders();
 
+        PurchaseOrder PlaceOrder(PurchaseOrder p_ord);
+
         Customer DeleteCustomer(Customer p_customer);
 
         Inventory GetItemById(int p_id);
