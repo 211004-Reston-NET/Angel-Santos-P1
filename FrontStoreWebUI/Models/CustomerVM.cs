@@ -1,4 +1,5 @@
 ﻿using StoreModels;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace FrontStoreWebUI.Models
@@ -19,6 +20,7 @@ namespace FrontStoreWebUI.Models
             this.Phone = p_cust.Phone;
         }
 
+        public IEnumerable<Customer> Customers { get; set; }
 
         public int CustomerId { get; set; }
         

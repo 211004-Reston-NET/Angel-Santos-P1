@@ -34,21 +34,7 @@ namespace FrontStoreWebUI.Controllers
 
 
         }
-        /*
-        [HttpGet]
-        public IActionResult SelectProduct()
-        {
-            return View();
-        }
-
-
-        [HttpPost]
-        public IActionResult SelectProduct(int p_id)
-        {
-            return View(_invBL.GetItemById(p_id));
-           
-        }
-        */
+        
         [HttpGet]
         public ActionResult SelectProduct(int p_id)
         {
@@ -63,7 +49,7 @@ namespace FrontStoreWebUI.Controllers
             {
                 Inventory invRep = _invBL.GetItemById(item.ProductId);
 
-                invRep.Quantity = item.Quantity;
+                invRep.Quantity =+ item.Quantity;
 
                 _invBL.Replenish(invRep);
 

@@ -58,18 +58,36 @@ namespace FrontStoreWebUI.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Search(string p_cust)
+        [HttpGet]
+        public IActionResult Select(int p_id)
         {
+            Customer _cust = _custBL.GetCustomerById(p_id);
 
-            return View(_custBL.GetCustomerByNames(p_cust)
-                .Select(c => new CustomerVM(c))
-                .ToList()
-                );
+            return View(new CustomerVM(_cust));
+        }
+
+        [HttpPost]
+        public IActionResult Select(CustomerVM p_cust)
+        {
+            //if (ModelState.IsValid)
+            // {
+
+
+            return View(_custBL.GetCustomerByFirstName(p_cust.FirstName)
+            .Select(cust => new CustomerVM(cust))
+            .ToList());
+                
+               // return RedirectToAction(nameof(Index));
+           // }
+
+           // return View();
             
         }
-        
 
+        public ActionResult Search()
+        {
+            return View();
+        }
 
         // GET: CustomerController/Details/5
         public ActionResult Details()
@@ -92,19 +110,7 @@ namespace FrontStoreWebUI.Controllers
             return View();
         }
 
-        /*
-        public ActionResult Search(string p_cust)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        */
+        
 
         // POST: CustomerController/Edit/5
         [HttpPost]
@@ -122,13 +128,7 @@ namespace FrontStoreWebUI.Controllers
         }
 
 
-        // GET: CustomerController/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //     return View();
-        // }
-
-        // POST: CustomerController/Delete/5
+       
 
         [HttpPost]
         [ValidateAntiForgeryToken]
