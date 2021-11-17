@@ -31,7 +31,7 @@ namespace FrontStoreWebUI
             services.AddScoped<ICustomerBL, CustomerBL>();
             services.AddScoped<IRepository, RepositoryCloud>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            services.AddSingleton<StoreModels.TestClass>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

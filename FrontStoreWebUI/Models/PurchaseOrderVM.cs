@@ -1,4 +1,5 @@
 ﻿using StoreModels;
+using StoreBL;
 using System;
 using System.Collections.Generic;
 
@@ -11,10 +12,13 @@ namespace FrontStoreWebUI.Models
 
         }
 
+        
+
         public PurchaseOrderVM(PurchaseOrder p_pur)                               
         {
             OrderId = p_pur.OrderId;
             StoreId = p_pur.StoreFrontId;
+            ProductId = p_pur.ProductId;
             CustomerId = p_pur.CustomerId;
             TotalPrice = p_pur.TotalPrice;
             PurchaseDate = p_pur.PurchaseDate;
@@ -22,11 +26,7 @@ namespace FrontStoreWebUI.Models
             
         }
 
-        public IEnumerable<PurchaseOrderVM> Products { get; set; }
-        
-        public IEnumerable<Inventory> Inventories { get; set; }
-        public IEnumerable<StoreFront> StoreFronts { get; set; }
-
+       
         public int OrderId { get; set; }
         public int StoreFrontId { get; set; }
         public DateTime PurchaseDate { get; set; }
@@ -34,7 +34,7 @@ namespace FrontStoreWebUI.Models
         public int ProductId { get; set; }
         public int CustomerId { get; set; }
 
-        public decimal Price { get; set; }
+       
         public decimal TotalPrice { get; set; }
 
         public string FirstName { get; set; }

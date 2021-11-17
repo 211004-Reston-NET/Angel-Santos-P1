@@ -8,35 +8,36 @@
 
 
 <h1> Order History </h1>
+<dt>
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>OrderId</th>
-            <th>StoreFrontId</th>
-            <th>CustomerId</th>
-            <th>TotalPrice</th>
-            <th>PurchaseDate</th>
-            <th></th>
-        </tr>
-    </thead>
+    <a class="btn btn-success text-white" asp-controller="PurchaseOrder" asp-action="Create">Log Order</a>
+</dt>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>OrderId</th>
+                <th>CustomerId</th>
+                <th>TotalPrice</th>
+                <th>PurchaseDate</th>
+                <th></th>
+            </tr>
+        </thead>
 
 
-    <tbody>
-        @foreach (var i in Model)
-        {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => i.OrderId)</td>
-            <td>@Html.DisplayFor(modelItem => i.StoreFrontId)</td>
-            <td>@Html.DisplayFor(modelItem => i.CustomerId)</td>
-            <td>@Html.DisplayFor(modelItem => i.TotalPrice)</td>
-            <td>@Html.DisplayFor(modelItem => i.PurchaseDate)</td>
+        <tbody>
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => i.OrderId)</td>
+                    <td>@Html.DisplayFor(modelItem => i.CustomerId)</td>
+                    <td>@Html.DisplayFor(modelItem => i.TotalPrice)</td>
+                    <td>@Html.DisplayFor(modelItem => i.PurchaseDate)</td>
 
-            <td>
 
-                <a class="btn btn-success text-white" asp-controller="PurchaseOrder" asp-action="Create">Log Order</a>
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+                    <td>
+                        <button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { p_id = i.OrderId }, new { @style = "color: white;" })</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

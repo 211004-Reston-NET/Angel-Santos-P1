@@ -71,11 +71,7 @@ namespace StoreDL
                         .FirstOrDefault(cus => cus.CustomerId == p_id);
         }
 
-       // public List<Customer> GetCustomerByNames(string p_cust, string p_cust1)
-        //{
-          //  return
-        //}
-
+      
         public List<Customer> GetCustomerByFirstName(string p_cust)
         {
             return _context.Customers
@@ -179,25 +175,18 @@ namespace StoreDL
         }
 
 
-      
-
-
         public Inventory Replenish(Inventory update)
         {
 
             _context.Inventories.Update(update);
-
             _context.SaveChanges();
             return update;
         }
-
-       
-      
+    
 
         public List<StoreInvCheck> AllItemStoreInfo(int p_id)
         {
             
-            //List<TestClass> = New List
             
             var result = (
                         from i in _context.Inventories
@@ -218,15 +207,21 @@ namespace StoreDL
             
         }
 
-        public void Checkout(PurchaseOrder p_order)
+        public PurchaseOrder GetOrderById(int p_id)
         {
-            
-            var customer = _context.Customers.Find(p_order.CustomerId);
-            customer.Orders.Add(p_order);
-            _context.SaveChanges();
-          
+            return _context.PurchaseOrders
+            .AsNoTracking() //Stop tracking entity once found
+            .FirstOrDefault(ord => ord.OrderId == p_id);
+
         }
-      
+
+        public PurchaseOrder DeleteOrder(PurchaseOrder p_order)
+        {
+            _context.PurchaseOrders.Remove(p_order);
+            _context.SaveChanges();
+            return p_order;
+        }
+
     }
 }
 

@@ -40,8 +40,6 @@ namespace StoreDL
         /// <returns></returns>
         List<Inventory> ShowInventory();
         
-
-
         /// <summary>
         /// Add new Customer to DB
         /// </summary>
@@ -50,12 +48,7 @@ namespace StoreDL
         Customer AddCustomer(Customer p_customer);
        // List<Product> ProductsByStoreId(int p_id);
 
-        /// <summary>
-        /// Find Customer by ID to add Order and save to DB
-        /// </summary>
-        /// <param name="p_order"> An Order added to the list of Orders by Customer ID</param>
-        void Checkout(PurchaseOrder p_order);
-
+        
         List<Inventory> InventoryByStoreId(int p_id);
 
         List<StoreInvCheck> AllItemStoreInfo(int p_id);
@@ -64,15 +57,21 @@ namespace StoreDL
 
         Product AddProduct(Product p_product);
 
-        List<PurchaseOrder> ShowOrders();
-
-        PurchaseOrder PlaceOrder(PurchaseOrder p_ord);
+        Inventory Replenish(Inventory update);
 
         Customer DeleteCustomer(Customer p_customer);
 
         Inventory GetItemById(int p_id);
 
         Product GetProductById(int p_id);
+
+        PurchaseOrder GetOrderById(int p_id);
+
+        PurchaseOrder DeleteOrder(PurchaseOrder p_order);
+
+        List<PurchaseOrder> ShowOrders();
+
+        PurchaseOrder PlaceOrder(PurchaseOrder p_ord);
 
         Customer GetCustomerById(int p_id);
 
@@ -81,12 +80,6 @@ namespace StoreDL
         List<Customer> GetCustomerByLastName(string p_cust);
 
         List<Customer> GetCustomerByNames(string p_cust);
-
-        Inventory Replenish(Inventory update);
-
-        //void ReplenishInventory(int p_id, int p_stockup);
-
-        //void ManualReplenish(StoreInvCheck p_inv);
-       
+      
     }
 }

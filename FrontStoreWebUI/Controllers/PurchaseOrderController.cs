@@ -86,6 +86,52 @@ namespace FrontStoreWebUI.Controllers
             }
         }
 
+       
+
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Delete(int p_id)
+        {
+            
+            return View(new PurchaseOrderVM(_orderBL.GetOrderById(p_id)));
+        }
+
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int p_id, IFormCollection collection)
+        {
+            try
+            {
+                PurchaseOrder _erase = _orderBL.GetOrderById(p_id);
+                _orderBL.DeleteOrder(_erase);
+                return RedirectToAction(nameof(Index));
+            }
+
+            catch
+
+            {
+                return View();
+            }
+        
+        }
         
     }
 }

@@ -5,10 +5,11 @@ namespace StoreBL
 {
     public interface IOrderBL
     {
-        void Checkout(PurchaseOrder p_order);
+        
         PurchaseOrder PlaceOrder(PurchaseOrder p_order);
-        public List<PurchaseOrder> ShowOrders();
-        //PurchaseOrder Checkout(PurchaseOrder p_purch);
-        //IEnumerable<PurchaseOrder> Sale(PurchaseOrder p_sale);
+        List<PurchaseOrder> ShowOrders();
+        PurchaseOrder GetOrderById(int p_id);
+        PurchaseOrder DeleteOrder(PurchaseOrder p_order);
+        
     }
 }

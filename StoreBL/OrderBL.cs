@@ -15,19 +15,25 @@ namespace StoreBL
             _repo = p_repo;
         }
 
-        public void Checkout(PurchaseOrder p_order)
-        {
-            _repo.Checkout(p_order);
-        }
-        
+                
         public PurchaseOrder PlaceOrder(PurchaseOrder p_order)
-            {
+        {
             return _repo.PlaceOrder(p_order);
-            }
+        }
 
         public List<PurchaseOrder> ShowOrders()
         {
             return _repo.ShowOrders();
+        }
+
+        public PurchaseOrder GetOrderById(int p_id)
+        {
+            return _repo.GetOrderById(p_id);
+        }
+
+        public PurchaseOrder DeleteOrder(PurchaseOrder p_order)
+        {
+            return _repo.DeleteOrder(p_order);
         }
 
         
