@@ -16,9 +16,10 @@
         <thead>
             <tr>
                 <th>OrderId</th>
+                <th>StoreId</th>
                 <th>CustomerId</th>
                 <th>TotalPrice</th>
-                <th>PurchaseDate</th>
+                <th>Date</th>
                 <th></th>
             </tr>
         </thead>
@@ -27,17 +28,18 @@
         <tbody>
             @foreach (var i in Model)
             {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => i.OrderId)</td>
-                    <td>@Html.DisplayFor(modelItem => i.CustomerId)</td>
-                    <td>@Html.DisplayFor(modelItem => i.TotalPrice)</td>
-                    <td>@Html.DisplayFor(modelItem => i.PurchaseDate)</td>
+            <tr>
+                <td>@Html.DisplayFor(modelItem => i.OrderId)</td>
+                <td>@Html.DisplayFor(modelItem => i.StoreId)</td>
+                <td>@Html.DisplayFor(modelItem => i.CustomerId)</td>
+                <td>@Html.DisplayFor(modelItem => i.TotalPrice)</td>
+                <td>@Html.DisplayFor(modelItem => i.PurchaseDate)</td>
 
 
-                    <td>
-                        <button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", "PurchaseOrder", new { p_id = i.OrderId }, new { @style = "color: white;" })</button>
-                    </td>
-                </tr>
+                <td>
+                    <button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", "PurchaseOrder", new { p_id = i.OrderId }, new { @style = "color: white;" })</button>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
