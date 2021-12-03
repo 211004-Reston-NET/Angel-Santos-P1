@@ -13,23 +13,7 @@ namespace StoreBL
         {
             _repo = p_repo;
         }
-/*
-        public void ReplenishInventory(int p_id, int p_stockup)
-        {   
-
-            _repo.ReplenishInventory(p_id, p_stockup);
-                
-        }
-
-  */      /*
-        public void ManualReplenish(int p_inv, int p_rep)
-        {
-            p_inv.Quantity += p_rep;
-            return _repo.ManualReplenish(p_rep);
-                
-        }
-        */
-        
+ 
     
         public Inventory GetItemById(int p_id)
         {
@@ -55,12 +39,7 @@ namespace StoreBL
             return _repo.AllItemStoreInfo(p_id);
         }
 
-        /*public List<Stock> AllItemStoreInfo(int p_id)
-        {
-            return _repo.AllItemStoreInfo(p_id);
-        }
-        */
-        
+   
         
     }
 }

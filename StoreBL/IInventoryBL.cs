@@ -5,19 +5,34 @@ namespace StoreBL
 {
     public interface IInventoryBL
     {
+        /// <summary>
+        /// Select Inventory item by ID
+        /// </summary>
+        /// <param name="p_id"></param>
+        /// <returns></returns>
         Inventory GetItemById(int p_id);
 
+        /// <summary>
+        /// Select and list -all inventories -all stores
+        /// </summary>
+        /// <param name="p_id"></param>
+        /// <returns></returns>
         List<StoreInvCheck> AllItemStoreInfo(int p_id);
 
+        /// <summary>
+        /// List inventory items for a select store.
+        /// </summary>
+        /// <returns></returns>
         List<Inventory> ShowInventory();
 
-        //void ReplenishInventory(int p_id, int p_stockup);
-
+        /// <summary>
+        /// Replenish/update inventory items for a select store
+        /// </summary>
+        /// <param name="update"></param>
+        /// <returns></returns>
         Inventory Replenish(Inventory update);
 
-        //StoreInvCheck ManualReplenish(int p_inv, int p_rep);
+        
 
     }
 }
-//Inventory Checkout(Inventory p_inv, int p_update);
-//Inventory ReplenishLineById(Inventory p_inv, int p_howMuchAdded);
