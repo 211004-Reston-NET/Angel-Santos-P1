@@ -63,9 +63,6 @@ namespace StoreModels
         
         
             
-        //public override string ToString()
-        //{
-        //    return $"First Name: {FirstName}\nLast Name:{LastName}\nStreet Address: {StreetAddress}\nEmail: {Email}";
-        //}
+        
     }
 }

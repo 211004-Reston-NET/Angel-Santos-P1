@@ -6,8 +6,12 @@ using System.Collections.Generic;
 
 #nullable disable
 
+/// <summary>
+/// Store Database Architecture -Entity Framework -codeFirst
+/// </summary>
+
 namespace StoreDL
-{
+{   
     public partial class DBp0Context : DbContext
     {
         public DBp0Context()

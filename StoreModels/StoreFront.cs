@@ -63,14 +63,6 @@ namespace StoreModels
                 _state = value;
             }
         }
-
-        
-
-        /*public override string ToString()
-        {
-            return $"Name: {StoreName}\nStreet Address: {Address}\nCity: {City}\nState: {State}";
-        }
-        */
-
+         
     }
 }
