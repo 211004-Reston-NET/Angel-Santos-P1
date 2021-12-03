@@ -21,7 +21,7 @@ jobs:
       uses: nuget/setup-nuget@v1
       with:
         nuget-version: ${{env.NUGET_VERSION}}
-        
+
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
