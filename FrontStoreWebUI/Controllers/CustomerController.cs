@@ -100,22 +100,20 @@ namespace FrontStoreWebUI.Controllers
 
         }
 
-        public ActionResult Search()
-        {
-            return View();
-        }
-
-        // GET: CustomerController/Details/5
-        public ActionResult Details()
-        {
-            return View();
-        }
-
-
+     
         public ActionResult Delete(int p_id)
         {
+            try
+            {
             //Passing the restaurant to the delete view
             return View(new CustomerVM(_custBL.GetCustomerById(p_id)));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Delete could not be processed.");
+            }
+
         }        
 
         // POST: CustomerController/Edit/5

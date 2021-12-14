@@ -1,6 +1,7 @@
 ﻿using FrontStoreWebUI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using StoreBL;
 using StoreModels;
 using System;
@@ -33,22 +34,40 @@ namespace FrontStoreWebUI.Controllers
 
         public ActionResult Index()
         {
+            try
+            {
             return View(_orderBL.ShowOrders()
                 .Select(c => new PurchaseOrderVM(c))
                 .ToList()
                 );
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Orders cannot be retrieved.");
+            }
         }
 
         [HttpGet]
         public IActionResult Create()
         {
+            try
+            {
             return View();
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Order cannot be processed.");
+            }
         }
 
 
         
         public IActionResult Create(PurchaseOrderVM p_pur)
         {
+            try
+            {
             //This if statement will check if the current model that is being passed through is valid
             //If not, the asp-validation-for attribute elements will appear and autofill in the proper feedback for the user 
             //to correct themselves
@@ -63,12 +82,16 @@ namespace FrontStoreWebUI.Controllers
                     CustomerId = p_pur.CustomerId
                     
                 });
-
                 return RedirectToAction(nameof(Index));
             }
-
             //Will return back to the create view if the user didn't specify the right input
             return View();
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Order information could not be stored.");
+            }
         }
 
         // POST: PurchaseOrderController/Purchase

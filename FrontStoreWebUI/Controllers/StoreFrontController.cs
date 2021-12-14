@@ -1,7 +1,9 @@
 ﻿using FrontStoreWebUI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using StoreBL;
+using System;
 using System.Linq;
 
 namespace FrontStoreWebUI.Controllers
@@ -16,16 +18,32 @@ namespace FrontStoreWebUI.Controllers
         
         // GET: StoreFrontController
         public ActionResult Index(){
+            try
+            {
             return View(_storeBL.GetAllStore()
                 .Select(store => new StoreVM(store))
                 .ToList()
             );
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("All store information cannot be listed at this time.");
+            }
         }
 
         public ActionResult StoreInv(int p_id)
         {
+            try
+            {
             return View(_storeBL.InventoryByStoreId(p_id)
                 .Select(inv => new InventoryVM(inv)).ToList());
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Store inventory information cannot be found");
+            }
         }
 
         // GET: StoreFrontController/Details/5
