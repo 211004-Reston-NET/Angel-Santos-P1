@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FrontStoreWebUI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StoreBL;
-using FrontStoreWebUI.Models;
 using System.Linq;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace FrontStoreWebUI.Controllers
 {
