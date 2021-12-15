@@ -77,7 +77,7 @@ jobs:
         dotnet-version: 5.0.x
           
     - name: Publish
-      run: dotnet publish .\FrontStoreWebUI --configuration Release -o ./publish
+      run: dotnet publish \FrontStoreWebUI --configuration Release -o ./publish
 
     - name: Deploy
       uses: azure/webapps-deploy@v2
