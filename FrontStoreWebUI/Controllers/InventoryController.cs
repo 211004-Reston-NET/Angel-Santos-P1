@@ -60,7 +60,7 @@ namespace FrontStoreWebUI.Controllers
             if (ModelState.IsValid)
             {
                 Inventory invRep = _invBL.GetItemById(item.ProductId);
-                invRep.Quantity =+ item.Quantity;
+                invRep.Quantity += item.Quantity;
                 _invBL.Replenish(invRep);
                 return RedirectToAction(nameof(Index));
             }
